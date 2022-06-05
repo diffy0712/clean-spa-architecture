@@ -9,7 +9,7 @@ import { ChangeEvent, Fragment, useState } from "react";
 import ControlledValidationModelProps from "../../Props/ControlledValidationModelProps";
 
 type InputProps<T> = {
-  label: string;
+  label?: string;
 } & ControlledValidationModelProps<T, React.ChangeEvent<HTMLInputElement>> &
   Omit<MUIInputProps, "onChange" | "value">;
 

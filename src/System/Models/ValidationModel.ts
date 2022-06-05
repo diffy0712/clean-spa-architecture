@@ -24,8 +24,6 @@ export class ValidationModel<T> implements ValidationModelInterface {
     }
 
     const ownMethodsAndProperties = getAllMethodsAndProperties(model);
-
-    console.log(ownMethodsAndProperties);
   }
 
   @computed

@@ -5,7 +5,7 @@ import BaseSerializableModel from "../../../System/Models/BaseSerializableModel"
 import { ValidationModelProps } from "../../../System/Models/ValidationModel";
 
 class ContactForm extends BaseSerializableModel
-  implements ValidationModelProps {
+  implements ValidationModelProps<ContactForm> {
   @observable
   @Expose()
   @IsEmail({ message: "Not a valid email" })

@@ -7,13 +7,11 @@ import withViewModel, {
 import TrimDataTransformer from "../../../System/DataTransformers/TrimDataTransformer";
 import Loader from "../../../System/Components/Loader/Loader";
 import FadeInOut from "../../../System/Components/Animations/FadeInOut/FadeInOut";
+import { HTMLMotionProps } from "framer-motion";
 
 type ContactVMProps = {
   fancy?: boolean;
-} & React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLDivElement>,
-  HTMLDivElement
->;
+} & HTMLMotionProps<"div">;
 
 const ContactVM = ({
   fancy,
@@ -21,6 +19,7 @@ const ContactVM = ({
   ...props
 }: WithViewModelProps<ContactViewModel> & ContactVMProps) => (
   <FadeInOut {...props}>
+    <>
     {console.log("rendered")}
     {/**{viewModel.loading && <Loader />} */}
     <h1 style={fancy ? { background: "red" } : {}}>
@@ -71,6 +70,7 @@ const ContactVM = ({
     original as json: {JSON.stringify(viewModel.contactForm.model.toObject())}
     <hr />
     {viewModel.contactForm.isValid ? "Valid" : "Not Valid"}
+    </>
   </FadeInOut>
 );
 

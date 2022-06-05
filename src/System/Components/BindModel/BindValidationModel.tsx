@@ -6,7 +6,7 @@ export type BindValidationModelProps<T> = {
   hideError?: boolean;
 } & BindModelProps<T>;
 
-const BindValidationModel = <T extends ValidationModelProps>({
+const BindValidationModel = <T extends ValidationModelProps<unknown>>({
   hideError,
   children,
   afterChange,

@@ -5,13 +5,13 @@ import { createViewModel, IViewModel } from "mobx-utils";
  * The library's exported interface is not correct,
  * it should extend the T generics as well.
  */
-type ProxyModel<T> = IViewModel<T> & T;
+export type ProxyModel<T> = IViewModel<T> & T;
 
 /**
  * Use ProxyModel name instead of ViewModel
  * since ViewModel has a different meaning for me.
  */
-const createProxyModel = <T extends object>(
+export const createProxyModel = <T extends object>(
   modelInstance: T
 ): ProxyModel<T> => {
   const proxyModel: ProxyModel<T> = createViewModel(modelInstance);
@@ -23,5 +23,3 @@ const createProxyModel = <T extends object>(
 
   return proxyModel;
 };
-
-export { ProxyModel, createProxyModel };

@@ -1,6 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
 import classnames from "classnames";
-import packageJson from "../../../../../package.json";
 import styles from "./Navigation.module.scss";
 
 const Navigation = () => (
@@ -62,7 +61,7 @@ const Navigation = () => (
         </NavLink>
       </div>
     </div>
-    <div className={styles.versionContainer}>v{packageJson.version}</div>
+    <div className={styles.versionContainer}>v0.1.0</div>
   </div>
 );
 

@@ -1,7 +1,7 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import Navigation from "./Navigation/Navigation";
 import Routes from "./Routes";
-import styles from "./Layout.module.css";
+import styles from "./Layout.module.scss";
 
 const Layout = () => (
   <Router>

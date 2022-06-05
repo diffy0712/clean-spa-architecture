@@ -1,0 +1,84 @@
+.sidebar {
+  width: 200px;
+  height: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition-duration: 0.2s;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  .logo {
+   flex-shrink: 0;
+   align-items: center;
+   border-radius: 50%;
+   justify-content: center;
+ 
+   a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 30px;
+   }
+  }
+  &Link {
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    &:hover,
+    &.isActive {
+      color: #000;
+      font-weight: 600;
+      &::before {
+        background: #1259f2;
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -20px;
+      background: transparent;
+      transition: all 0.3s ease-in-out;
+      width: 4px;
+      height: 100%;
+      padding: 10px 0px;
+    }
+  }
+}
+
+.sideWrapper {
+  padding: 20px 0;
+  width: auto;
+}
+
+.sideTitle {
+  font-size: 12px;
+  letter-spacing: 0.07em;
+  margin-bottom: 24px;
+}
+
+.sideMenu {
+  display: flex;
+  flex-direction: column;
+  :global(a) {
+   display: flex;
+   align-items: center;
+   text-decoration: none;
+   color: var(--body-color);
+   & + a {
+    margin-top: 26px;
+   }
+  }
+ }
+
+.versionContainer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+  font-size: 10px;
+  padding: 10px
+}

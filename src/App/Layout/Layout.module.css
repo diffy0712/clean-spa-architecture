@@ -1,0 +1,29 @@
+.container {
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  font-size: 15px;
+  font-weight: 500;
+  position: relative;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px 30px;
+  flex-grow: 1;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  flex-grow: 1;
+  overflow: auto;
+  background: #d1d0d4;
+}

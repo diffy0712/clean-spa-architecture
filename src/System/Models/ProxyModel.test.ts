@@ -1,0 +1,31 @@
+import { makeObservable, observable } from "mobx";
+import { createProxyModel } from "./ProxyModel";
+
+class InValidModel {
+  name: string = "";
+}
+
+class ValidModel {
+  @observable
+  name: string = "";
+
+  constructor() {
+    makeObservable(this);
+  }
+}
+
+describe("Test Proxy", () => {
+  test("Cannot Create Validation model on not observable model.", () => {
+    const inValidModel = new InValidModel();
+    expect(() => createProxyModel(inValidModel)).toThrow(
+      "createViewModel expects an observable object"
+    );
+  });
+
+  test("Can Create Validation model", () => {
+    const validModel = new ValidModel();
+    expect(() => createProxyModel(validModel)).not.toThrow(
+      "createViewModel expects an observable object"
+    );
+  });
+});

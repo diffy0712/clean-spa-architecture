@@ -1,0 +1,69 @@
+import { Link, NavLink } from "react-router-dom";
+import classnames from "classnames";
+import packageJson from "../../../../../package.json";
+import styles from "./Navigation.module.scss";
+
+const Navigation = () => (
+  <div className={styles.sidebar}>
+    <div className={styles.logo}>
+      <Link to="/">Clean SPA Architecture</Link>
+    </div>
+    <div className={styles.sideWrapper}>
+      <div className={styles.sideMenu}>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            classnames(styles.sidebarLink, { [styles.isActive]: isActive })
+          }
+        >
+          README
+        </NavLink>
+      </div>
+    </div>
+    <div className={styles.sideWrapper}>
+      <div className={styles.sideTitle}>Basic Examples</div>
+      <div className={styles.sideMenu}>
+        <NavLink
+          to="/counter"
+          className={({ isActive }) =>
+            classnames(styles.sidebarLink, { [styles.isActive]: isActive })
+          }
+        >
+          Counter
+        </NavLink>
+        <NavLink
+          to="/contact"
+          className={({ isActive }) =>
+            classnames(styles.sidebarLink, { [styles.isActive]: isActive })
+          }
+        >
+          Contact Form
+        </NavLink>
+        <NavLink
+          to="/contact-vm"
+          className={({ isActive }) =>
+            classnames(styles.sidebarLink, { [styles.isActive]: isActive })
+          }
+        >
+          Contact Form - ViewModel
+        </NavLink>
+      </div>
+    </div>
+    <div className={styles.sideWrapper}>
+      <div className={styles.sideTitle}>Complex Examples</div>
+      <div className={styles.sideMenu}>
+        <NavLink
+          to="/products"
+          className={({ isActive }) =>
+            classnames(styles.sidebarLink, { [styles.isActive]: isActive })
+          }
+        >
+          Products CRUD
+        </NavLink>
+      </div>
+    </div>
+    <div className={styles.versionContainer}>v{packageJson.version}</div>
+  </div>
+);
+
+export default Navigation;

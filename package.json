@@ -18,7 +18,6 @@
     "mobx": "6.6.0",
     "mobx-react-lite": "3.4.0",
     "mobx-utils": "6.0.5",
-    "normalize.css": "8.0.1",
     "primeflex": "3.2.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",

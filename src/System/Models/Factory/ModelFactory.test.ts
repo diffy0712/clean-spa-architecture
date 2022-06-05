@@ -32,6 +32,18 @@ test("Can create new model", () => {
   expect(model.id).toEqual("someee iiiidd");
 });
 
+test("Throws error on undefined uniqueId", () => {
+  class TestModelWithUndefinedUniqueId extends TestModel{
+    get uniqueId(): string | undefined {
+      return undefined;
+    }
+  }
+
+  expect(() => ModelFactory.create(TestModelWithUndefinedUniqueId, {
+    id: "someee iiiidd"
+  })).toThrowError();
+});
+
 test("Can get existing model", () => {
   const model = ModelFactory.create(TestModel, {
     id: "test2"

@@ -2,10 +2,8 @@ import { Expose } from "class-transformer";
 import { IsEmail, MinLength, validate, ValidationError } from "class-validator";
 import { computed, makeObservable, observable } from "mobx";
 import BaseSerializableModel from "../../../System/Models/BaseSerializableModel";
-import { ValidationModelProps } from "../../../System/Models/ValidationModel";
 
-class ContactForm extends BaseSerializableModel
-  implements ValidationModelProps<ContactForm> {
+class ContactForm extends BaseSerializableModel {
   @observable
   @Expose()
   @IsEmail({ message: "Not a valid email" })

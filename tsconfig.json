@@ -23,7 +23,7 @@
     },
     "include": [
       "src",
-      "typings/styles.d.ts"
+      "typings/**/*.d.ts"
     ]
   }
   

@@ -1,15 +1,14 @@
 import { observer } from "mobx-react-lite";
+import { ValidationProxyType } from "../../Models/ValidationProxy";
 import BindModel, { BindModelProps } from "./BindModel";
-import { ValidationModelProps } from "../../Models/ValidationModel";
 
 export type BindValidationModelProps<T> = {
   hideError?: boolean;
 } & BindModelProps<T>;
 
-const BindValidationModel = <T extends ValidationModelProps<unknown>>({
+const BindValidationModel = <T extends ValidationProxyType<unknown>>({
   hideError,
   children,
-  afterChange,
   ...props
 }: BindValidationModelProps<T>) => {
   const extraProps: {
@@ -20,11 +19,6 @@ const BindValidationModel = <T extends ValidationModelProps<unknown>>({
   return (
     <BindModel
       extraProps={extraProps}
-      afterChange={(value, prevValue) => {
-        afterChange?.(value, prevValue);
-
-        props.model.validate();
-      }}
       children={children}
       {...props}
     />

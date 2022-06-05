@@ -20,16 +20,16 @@ import {
   Backdrop
 } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
-import { createValidationModel } from "../../../System/Models/ValidationModel";
+import { createValidationProxy, ValidationProxyType } from "../../../System/Models/ValidationProxy";
 
 const Contact = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const contactForm = useRef<ProxyModel<ContactForm>>(
-    createProxyModel(new ContactForm())
+  const contactForm = useRef<ValidationProxyType<ProxyModel<ContactForm>>>(
+    createValidationProxy(createProxyModel(new ContactForm()))
   );
 
   const isSubmitable: boolean =
-    contactForm.current.isValid && contactForm.current.isDirty;
+    contactForm.current.isValid() && contactForm.current.isDirty;
 
   const onLoadFromJson = () => {
     contactForm.current.fromObject({

@@ -1,9 +1,12 @@
+import { runInAction } from "mobx";
 import { observer } from "mobx-react-lite";
 import React, { ReactElement } from "react";
 import DataTransformerInterface from "../../DataTransformers/DataTransformerInterface";
 
 function setProperty<T>(model: T, property: keyof T, value: any) {
-  model[property] = value;
+  runInAction(() => {
+    model[property] = value;
+  });
 }
 
 const executeTransformersToIn = (
@@ -84,7 +87,6 @@ const BindModel = <T extends unknown>({
 };
 
 BindModel.defaultProps = {
-  extraProps: {},
   dataTransformers: []
 };
 

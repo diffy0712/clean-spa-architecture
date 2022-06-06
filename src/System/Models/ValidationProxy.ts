@@ -57,9 +57,14 @@ export const createValidationProxy = <T extends object>(model: T, groups: string
     );
   }
 
-  const isValid = (groups: string[] = ['all']): boolean => {
-    // TODO: implement
-    return true
+  const isValid = (groups: readonly string[] = ['all']): boolean => {
+    for (const group of groups) {
+      if (errors[group] && errors[group].length > 0) {
+        return false;
+      }
+    }
+    
+    return true;
   }
 
   const propertyShouldTriggerValidation = (property: string): boolean => {

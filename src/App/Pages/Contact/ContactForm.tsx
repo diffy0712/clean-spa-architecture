@@ -1,5 +1,5 @@
 import { Expose } from "class-transformer";
-import { IsEmail, MinLength } from "class-validator";
+import { IsEmail, IsIn, MinLength } from "class-validator";
 import {makeObservable, observable } from "mobx";
 import BaseSerializableModel from "../../../System/Models/BaseSerializableModel";
 
@@ -17,6 +17,11 @@ class ContactForm extends BaseSerializableModel {
   @observable
   @Expose()
   message: string = "";
+
+  @observable
+  @Expose()
+  @IsIn([true], { message: 'You must accept terms and contidions!' })
+  termsAndConditionsAccepted: boolean = false;
 
   constructor() {
     super();

@@ -36,12 +36,11 @@ const Input = <T extends string | number | readonly string[]>({
       variant="standard"
       className="w-full"
     >
-      {label && <InputLabel htmlFor="component-error">{label}</InputLabel>}
+      {label && <InputLabel htmlFor={props.id}>{label}</InputLabel>}
       <MUIInput
         type="text"
-        id="component-error"
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
-          onChange?.(event, event.target.value as T);
+          onChange?.(event);
         }}
         minRows={2}
         maxRows={10}

@@ -2,6 +2,7 @@ import { observer } from "mobx-react-lite";
 import { useRef, useState } from "react";
 import ContactForm from "./ContactForm";
 import Input from "../../../System/Components/FormControl/Input/Input";
+import Checkbox from "../../../System/Components/FormControl/Checkbox/Checkbox";
 import BindValidationModel from "../../../System/Components/BindModel/BindValidationModel";
 import FadeInOut from "../../../System/Components/Animations/FadeInOut/FadeInOut";
 import {
@@ -37,7 +38,6 @@ const Contact = () => {
       full_name: "test user",
       message: "a sample message"
     });
-    contactForm.current.validate();
   };
 
   const onResetChanges = () => {
@@ -105,6 +105,17 @@ const Contact = () => {
                   label="Message"
                   id="message"
                   placeholder="Message"
+                />
+              </BindValidationModel>
+            </div>
+            <div className="col-12">
+              <BindValidationModel
+                model={contactForm.current}
+                property="termsAndConditionsAccepted"
+              >
+                <Checkbox
+                  label="Accept the terms and conditions!"
+                  id="termsAndConditionsAccepted"
                 />
               </BindValidationModel>
             </div>

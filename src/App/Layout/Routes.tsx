@@ -5,11 +5,12 @@ import Home from "../Pages/Home/Home";
 import Counter from "../Pages/Counter/Counter";
 import Contact from "../Pages/Contact/Contact";
 import ContactVM from "../Pages/ContactVm/ContactVM";
+import CampaignModule from "../Pages/Campaign/CampaignModule";
 
 const Routes = () => {
   const location = useLocation();
   const modules: [string, ReactElement][] = [
-    /**["/notes", <NotesModule /> ]*/
+    ["/campaigns", <CampaignModule /> ]
   ];
 
   // With the location.pathname defined as key, when navigating between
@@ -20,10 +21,8 @@ const Routes = () => {
   //
   // Using animations this problem is visible. Just return the location.pathname as key :)
   const getLocationKey = () => {
-    // TODO: ezt befejezni
-    return location.pathname.indexOf("notes") > 0
-      ? "/notes"
-      : location.pathname;
+    const module = modules.find(module => location.pathname.indexOf(module[0]) > 0);
+    return module ? module[0] : location.pathname;
   };
 
   return (

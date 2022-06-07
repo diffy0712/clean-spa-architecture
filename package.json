@@ -33,17 +33,17 @@
     "@types/react-dom": "18.0.5",
     "@types/react-router-dom": "5.3.3",
     "@types/react-test-renderer": "18.0.0",
+    "jest": "28.1.1",
     "react-test-renderer": "18.1.0",
     "sass-loader": "^13.0.0",
     "ts-jest": "28.0.2",
-    "jest": "28.1.0",
     "typescript": "4.7.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "test:coverage": "react-scripts test --coverage --watchAll=false" 
+    "test:coverage": "react-scripts test --coverage --watchAll=false"
   },
   "browserslist": [
     ">0.2%",

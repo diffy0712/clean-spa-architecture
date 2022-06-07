@@ -69,7 +69,11 @@ const BindModel = <T extends unknown>({
     let value: any;
 
     if (typeof eventOrValue.target !== "undefined") {
-      value = eventOrValue.target.value as T;
+      if (eventOrValue.target.type === 'checkbox') {
+        value = eventOrValue.target.checked as boolean;
+      } else {
+        value = eventOrValue.target.value as T;
+      }
     } else {
       value = eventOrValue;
     }
@@ -78,9 +82,8 @@ const BindModel = <T extends unknown>({
 
     if (value !== undefined) {
       setProperty(model, property, value);
+      afterChange?.(model[property], prevValue);
     }
-
-    afterChange?.(model[property], prevValue);
   };
 
   return React.cloneElement(children, extraProps);

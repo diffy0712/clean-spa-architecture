@@ -1,8 +1,5 @@
 import { makeObservable, observable } from "mobx";
-import {
-  createProxyModel,
-  ProxyModel
-} from "../../../System/Models/ProxyModel";
+import { createValidationProxyModel, ValidationProxyModel } from "../../../System/Models/ValidationProxyModel";
 import ContactVMForm from "./ContactVMForm";
 
 export class ContactViewModelProps {
@@ -10,14 +7,18 @@ export class ContactViewModelProps {
 }
 
 class ContactViewModel {
-  public contactForm: ProxyModel<ContactVMForm>;
+  public contactForm: ValidationProxyModel<ContactVMForm>;
 
   @observable
   public loading: boolean = false;
 
+  get isSubmittable(): boolean {
+    return this.contactForm.isValid() && this.contactForm.isDirty;
+  }
+
   constructor(props?: ContactViewModelProps) {
     console.log("ContactViewModel Initialized", props);
-    this.contactForm = createProxyModel(new ContactVMForm());
+    this.contactForm = createValidationProxyModel(new ContactVMForm());
 
     makeObservable(this);
   }
@@ -45,12 +46,25 @@ class ContactViewModel {
   async onSubmitChanges() {
     this.loading = true;
 
-    await new Promise((r) => setTimeout(r, 1000));
-
     this.contactForm.submit();
 
     this.loading = false;
   }
+
+  async onSubmitForm() {
+    if (!this.isSubmittable) {
+      throw Error("Should not be able to call on not submitable form.");
+    }
+
+    this.loading = true;
+
+    // simulate some api call
+    await new Promise((r) => setTimeout(r, 2000));
+
+    this.contactForm.submit();
+
+    this.loading = false;
+  };
 }
 
 export default ContactViewModel;

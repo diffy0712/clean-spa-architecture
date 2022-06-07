@@ -1,6 +1,6 @@
 import { Expose } from "class-transformer";
-import { IsEmail, MinLength, validate, ValidationError } from "class-validator";
-import { computed, makeObservable, observable } from "mobx";
+import { IsEmail, IsIn, MinLength } from "class-validator";
+import {makeObservable, observable } from "mobx";
 import BaseSerializableModel from "../../../System/Models/BaseSerializableModel";
 
 class ContactVMForm extends BaseSerializableModel {
@@ -19,21 +19,13 @@ class ContactVMForm extends BaseSerializableModel {
   message: string = "";
 
   @observable
-  errors: ValidationError[] = [];
-
-  @computed
-  get isValid(): boolean {
-    return this.errors.length === 0;
-  }
+  @Expose()
+  @IsIn([true], { message: 'You must accept terms and contidions!' })
+  termsAndConditionsAccepted: boolean = false;
 
   constructor() {
     super();
-    this.validate();
     makeObservable(this);
-  }
-
-  async validate() {
-    this.errors = await validate(this);
   }
 }
 

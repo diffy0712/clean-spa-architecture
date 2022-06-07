@@ -52,12 +52,12 @@ const Navigation = () => (
       <div className={styles.sideTitle}>Complex Examples</div>
       <div className={styles.sideMenu}>
         <NavLink
-          to="/products"
+          to="/campaigns"
           className={({ isActive }) =>
             classnames(styles.sidebarLink, { [styles.isActive]: isActive })
           }
         >
-          Products CRUD
+          Campaigns CRUD
         </NavLink>
       </div>
     </div>

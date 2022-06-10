@@ -1,4 +1,5 @@
 import { makeObservable, observable } from "mobx";
+import Notifier from "../../../System/Models/Notifier";
 import { createValidationProxyModel, ValidationProxyModel } from "../../../System/Models/ValidationProxyModel";
 import ContactVMForm from "./ContactVMForm";
 
@@ -8,6 +9,8 @@ export class ContactViewModelProps {
 
 class ContactViewModel {
   public contactForm: ValidationProxyModel<ContactVMForm>;
+
+  protected notifier = Notifier;
 
   @observable
   public loading: boolean = false;
@@ -29,6 +32,10 @@ class ContactViewModel {
 
   dispose() {
     console.log("dispose");
+  }
+
+  onMessage() {
+    this.notifier.success('Notification message');
   }
 
   onLoadFromJson() {
@@ -58,10 +65,11 @@ class ContactViewModel {
 
     this.loading = true;
 
-    // simulate some api call
     await new Promise((r) => setTimeout(r, 2000));
 
     this.contactForm.submit();
+
+    this.notifier.success('Concact form submitted');
 
     this.loading = false;
   };

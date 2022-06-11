@@ -38,6 +38,7 @@ const Routes = () => {
 					path="/contact-vm"
 					element={
 						<ContactVM
+							fancy
 							onChange={(value) => {
 								console.log(value);
 							}}

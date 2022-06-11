@@ -19,6 +19,7 @@ import {
 import BindValidationModel from '../../../System/Components/BindModel/BindValidationModel';
 import Checkbox from '../../../System/Components/FormControl/Checkbox/Checkbox';
 import { LoadingButton } from '@mui/lab';
+import { CelebrationOutlined } from '@mui/icons-material';
 
 type ContactVMProps = {
 	fancy?: boolean;
@@ -31,7 +32,9 @@ const ContactVM = ({
 }: WithViewModelProps<ContactViewModel> & ContactVMProps) => (
 	<FadeInOut {...props}>
 		<div className="w-full mb-4">
-			<Typography variant="h5">Get In Touch With Us</Typography>
+			<Typography variant="h5">
+				Get In Touch With Us {fancy && <CelebrationOutlined />}
+			</Typography>
 		</div>
 		<Alert severity="info" className="mb-4">
 			The same contact form as Contact, but using a ViewModel. All of the
@@ -40,7 +43,6 @@ const ContactVM = ({
 		</Alert>
 		<Card className="relative">
 			<Backdrop open={viewModel.loading} className="absolute z-5" />
-			{fancy ? 'isFancy' : 'notFancy'}
 			<CardContent>
 				<div className="grid w-full">
 					<div className="col-6">

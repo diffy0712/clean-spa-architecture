@@ -36,6 +36,7 @@ const Notifications = ({
 							variant="contained"
 							size="small"
 							onClick={viewModel.onMessage.bind(viewModel)}
+							data-testid="test-message-button"
 						>
 							Test message
 						</Button>

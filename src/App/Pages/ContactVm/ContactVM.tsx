@@ -16,7 +16,6 @@ import {
 	Chip,
 	Typography,
 } from '@mui/material';
-import { Link } from 'react-router-dom';
 import BindValidationModel from '../../../System/Components/BindModel/BindValidationModel';
 import Checkbox from '../../../System/Components/FormControl/Checkbox/Checkbox';
 import { LoadingButton } from '@mui/lab';
@@ -35,10 +34,9 @@ const ContactVM = ({
 			<Typography variant="h5">Get In Touch With Us</Typography>
 		</div>
 		<Alert severity="info" className="mb-4">
-			The same contact form as <Link to="/contact">Contact</Link>, but using a
-			ViewModel. All of the business logic of this component was extracted into
-			it&apos;s ViewModel class. This way the component and it&apos;s business
-			logic are decoupled.
+			The same contact form as Contact, but using a ViewModel. All of the
+			business logic of this component was extracted into it&apos;s ViewModel
+			class. This way the component and it&apos;s business logic are decoupled.
 		</Alert>
 		<Card className="relative">
 			<Backdrop open={viewModel.loading} className="absolute z-5" />

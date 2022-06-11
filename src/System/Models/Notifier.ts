@@ -1,21 +1,28 @@
-type NotifierCallback = (message: string) => void;
+type NotifierCallback = (notification: Notification) => void;
+
+export type NotificationTypes = 'success' | 'warning' | 'error' | 'info';
+
+export type Notification = {
+    type: NotificationTypes;
+    title: string;
+};
 
 class Notifier {
     subscribers: (NotifierCallback)[] = [];
 
-    success(message: string): void
+    notify(notification: Notification): void
     {
         this.subscribers.forEach(subscriber => {
-            subscriber(message);
+            subscriber(notification);
         });
     }
 
-    subscribe(notifier: NotifierCallback) {
-        this.subscribers.push(notifier);
+    subscribe(subscriber: NotifierCallback) {
+        this.subscribers.push(subscriber);
     }
 
-    unsubscribe(notifier: NotifierCallback) {
-        const index = this.subscribers.indexOf(notifier);
+    unsubscribe(subscriber: NotifierCallback) {
+        const index = this.subscribers.indexOf(subscriber);
         if (index > -1) {
             this.subscribers.splice(index, 1);
         }

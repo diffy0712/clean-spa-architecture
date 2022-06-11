@@ -46,6 +46,14 @@ const Navigation = () => (
         >
           Contact Form - ViewModel
         </NavLink>
+        <NavLink
+          to="/notifications"
+          className={({ isActive }) =>
+            classnames(styles.sidebarLink, { [styles.isActive]: isActive })
+          }
+        >
+          Notifications
+        </NavLink>
       </div>
     </div>
     <div className={styles.sideWrapper}>

@@ -35,7 +35,10 @@ class ContactViewModel {
   }
 
   onMessage() {
-    this.notifier.success('Notification message');
+    this.notifier.notify({
+      title: 'Notification message',
+      type: 'success'
+    });
   }
 
   onLoadFromJson() {
@@ -69,7 +72,10 @@ class ContactViewModel {
 
     this.contactForm.submit();
 
-    this.notifier.success('Concact form submitted');
+    this.notifier.notify({
+      title: 'Form submitted',
+      type: 'success'
+    });
 
     this.loading = false;
   };

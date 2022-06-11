@@ -9,7 +9,7 @@ const Notifications = ({viewModel}: WithViewModelProps<NotificationsViewModel>) 
             <Snackbar
                 open
                 key={`${notification}-${index}`}
-                message={notification}
+                message={notification.title}
                 action={ <>
                     <IconButton
                       size="small"
@@ -19,7 +19,7 @@ const Notifications = ({viewModel}: WithViewModelProps<NotificationsViewModel>) 
                     >
                       <CloseIcon fontSize="small" />
                     </IconButton>
-                  </>}
+                </>}
             />
         ))}
     </>

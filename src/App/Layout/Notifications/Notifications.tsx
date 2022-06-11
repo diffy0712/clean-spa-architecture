@@ -20,6 +20,7 @@ const NotificationWrapper = () => (
 			horizontal: 'right',
 		}}
 		TransitionComponent={Slide}
+		maxSnack={6}
 	>
 		<NotificationViewModel />
 	</SnackbarProvider>

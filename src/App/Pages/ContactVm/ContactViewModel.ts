@@ -15,6 +15,8 @@ class ContactViewModel {
 
 	protected notifier = Notifier;
 
+	protected props?: ContactViewModelProps;
+
 	@observable
 	public loading = false;
 
@@ -28,23 +30,9 @@ class ContactViewModel {
 		makeObservable(this);
 	}
 
-	init(props?: ContactViewModelProps) {
+	init(props: ContactViewModelProps) {
+		this.props = props;
 		console.log('ContactViewModel mounted', props);
-	}
-
-	update(props: ContactViewModelProps) {
-		console.log('update', props);
-	}
-
-	dispose() {
-		console.log('dispose');
-	}
-
-	onMessage() {
-		this.notifier.notify({
-			title: 'Notification message',
-			type: 'success',
-		});
 	}
 
 	onLoadFromJson() {
@@ -52,6 +40,7 @@ class ContactViewModel {
 			email: 'test@example.com',
 			full_name: 'test user',
 			message: 'a sample message',
+			termsAndConditionsAccepted: false,
 		});
 	}
 
@@ -82,6 +71,8 @@ class ContactViewModel {
 			title: 'Form submitted',
 			type: 'success',
 		});
+
+		this.props?.onChange?.(this.contactForm);
 
 		this.loading = false;
 	}

@@ -10,11 +10,11 @@ const useInstance = <T, PROPS>(
 		vmRef.current = new instanceConstructor();
 	}
 
-	if (typeof vmRef.current.init === 'function') {
-		vmRef.current.init(props);
-	}
-
 	useEffect(() => {
+		if (typeof vmRef.current.init === 'function') {
+			vmRef.current.init(props);
+		}
+
 		return () => {
 			if (typeof vmRef.current.dispose === 'function') {
 				vmRef.current.dispose();

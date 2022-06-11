@@ -40,6 +40,7 @@ const Contact = () => {
 			email: 'test@example.com',
 			full_name: 'test user',
 			message: 'a sample message',
+			termsAndConditionsAccepted: false,
 		});
 	};
 

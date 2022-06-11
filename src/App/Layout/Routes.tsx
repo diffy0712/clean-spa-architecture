@@ -34,7 +34,16 @@ const Routes = () => {
 				<Route path="/" element={<Home />} />
 				<Route path="/counter" element={<Counter />} />
 				<Route path="/contact" element={<Contact />} />
-				<Route path="/contact-vm" element={<ContactVM />} />
+				<Route
+					path="/contact-vm"
+					element={
+						<ContactVM
+							onChange={(value) => {
+								console.log(value);
+							}}
+						/>
+					}
+				/>
 				<Route path="/notifications" element={<Notifications />} />
 				{modules.map((module) => (
 					<Route path={`${module[0]}/*`} element={module[1]} key={module[0]} />

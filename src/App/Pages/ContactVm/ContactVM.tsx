@@ -119,13 +119,6 @@ const ContactVM = ({
 						</div>
 					</div>
 					<div className="col-4 text-right">
-						<Button
-							variant="contained"
-							size="small"
-							onClick={viewModel.onMessage.bind(viewModel)}
-						>
-							Message
-						</Button>
 						<LoadingButton
 							loading={viewModel.loading}
 							variant="contained"

@@ -1,87 +1,90 @@
-import { makeObservable, observable } from "mobx";
-import Notifier from "../../../System/Models/Notifier";
-import { createValidationProxyModel, ValidationProxyModel } from "../../../System/Models/ValidationProxyModel";
-import ContactVMForm from "./ContactVMForm";
+import { makeObservable, observable } from 'mobx';
+import Notifier from '../../../System/Models/Notifier';
+import {
+	createValidationProxyModel,
+	ValidationProxyModel,
+} from '../../../System/Models/ValidationProxyModel';
+import ContactVMForm from './ContactVMForm';
 
 export class ContactViewModelProps {
-  onChange?: (value: ContactVMForm) => void = undefined;
+	onChange?: (value: ContactVMForm) => void = undefined;
 }
 
 class ContactViewModel {
-  public contactForm: ValidationProxyModel<ContactVMForm>;
+	public contactForm: ValidationProxyModel<ContactVMForm>;
 
-  protected notifier = Notifier;
+	protected notifier = Notifier;
 
-  @observable
-  public loading: boolean = false;
+	@observable
+	public loading = false;
 
-  get isSubmittable(): boolean {
-    return this.contactForm.isValid() && this.contactForm.isDirty;
-  }
+	get isSubmittable(): boolean {
+		return this.contactForm.isValid() && this.contactForm.isDirty;
+	}
 
-  constructor() {
-    this.contactForm = createValidationProxyModel(new ContactVMForm());
+	constructor() {
+		this.contactForm = createValidationProxyModel(new ContactVMForm());
 
-    makeObservable(this);
-  }
+		makeObservable(this);
+	}
 
-  init(props?: ContactViewModelProps) {
-    console.log("ContactViewModel mounted", props);
-  }
+	init(props?: ContactViewModelProps) {
+		console.log('ContactViewModel mounted', props);
+	}
 
-  update(props: ContactViewModelProps) {
-    console.log("update", props);
-  }
+	update(props: ContactViewModelProps) {
+		console.log('update', props);
+	}
 
-  dispose() {
-    console.log("dispose");
-  }
+	dispose() {
+		console.log('dispose');
+	}
 
-  onMessage() {
-    this.notifier.notify({
-      title: 'Notification message',
-      type: 'success'
-    });
-  }
+	onMessage() {
+		this.notifier.notify({
+			title: 'Notification message',
+			type: 'success',
+		});
+	}
 
-  onLoadFromJson() {
-    this.contactForm.fromObject({
-      email: "test@example.com",
-      full_name: "test user",
-      message: "a sample message"
-    });
-  }
+	onLoadFromJson() {
+		this.contactForm.fromObject({
+			email: 'test@example.com',
+			full_name: 'test user',
+			message: 'a sample message',
+		});
+	}
 
-  onResetChanges() {
-    this.contactForm.reset();
-  }
+	onResetChanges() {
+		this.contactForm.reset();
+	}
 
-  async onSubmitChanges() {
-    this.loading = true;
+	async onSubmitChanges() {
+		this.loading = true;
 
-    this.contactForm.submit();
+		this.contactForm.submit();
 
-    this.loading = false;
-  }
+		this.loading = false;
+	}
 
-  async onSubmitForm() {
-    if (!this.isSubmittable) {
-      throw Error("Should not be able to call on not submitable form.");
-    }
+	async onSubmitForm() {
+		if (!this.isSubmittable) {
+			throw Error('Should not be able to call on not submitable form.');
+		}
 
-    this.loading = true;
+		this.loading = true;
 
-    await new Promise((r) => setTimeout(r, 2000));
+		await new Promise((r) => setTimeout(r, 2000));
 
-    this.contactForm.submit();
+		this.contactForm.submit();
 
-    this.notifier.notify({
-      title: 'Form submitted',
-      type: 'success'
-    });
+		this.notifier.notify({
+			title: 'Form submitted',
+			type: 'success',
+		});
 
-    this.loading = false;
-  };
+		this.loading = false;
+	}
 }
 
 export default ContactViewModel;

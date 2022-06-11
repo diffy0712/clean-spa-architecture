@@ -1,8 +1,8 @@
-import { SyntheticEvent } from "react";
+import { SyntheticEvent } from 'react';
 
 type ControlledModelProps<T, EVENT extends SyntheticEvent = SyntheticEvent> = {
-  value?: T;
-  onChange?: (eventOrValue: EVENT | T) => void;
+	value?: T;
+	onChange?: (eventOrValue: EVENT | T) => void;
 };
 
 export default ControlledModelProps;

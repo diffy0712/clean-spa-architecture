@@ -1,3 +1,3 @@
 export interface UniqueModel {
-  readonly uniqueId: string | undefined;
+	readonly uniqueId: string | undefined;
 }

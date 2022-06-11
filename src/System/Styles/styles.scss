@@ -1,36 +1,36 @@
 @import 'reset';
-@import "primeflex/primeflex.css";
+@import 'primeflex/primeflex.css';
 
-@import "@fontsource/roboto/300.css";
-@import "@fontsource/roboto/400.css";
-@import "@fontsource/roboto/500.css";
-@import "@fontsource/roboto/700.css";
+@import '@fontsource/roboto/300.css';
+@import '@fontsource/roboto/400.css';
+@import '@fontsource/roboto/500.css';
+@import '@fontsource/roboto/700.css';
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 .app {
-  font-family: sans-serif;
+	font-family: sans-serif;
 }
 
 nav {
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
+	background: rgba(0, 0, 0, 0.6);
+	display: flex;
+	justify-content: center;
 }
 
 nav .nav-item {
-  margin: 4px 6px;
+	margin: 4px 6px;
 }
 nav .nav-item a {
-  text-decoration: none;
-  color: #fff;
-  text-transform: uppercase;
+	text-decoration: none;
+	color: #fff;
+	text-transform: uppercase;
 }
 
 nav .nav-item a:hover {
-  color: #ddd;
+	color: #ddd;
 }
 
 .page-container {
-  margin: 20px 0px;
+	margin: 20px 0px;
 }

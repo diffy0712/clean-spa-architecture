@@ -1,4 +1,4 @@
 export default interface SerializableModel {
-  toObject(): any;
-  fromObject(data: any): void;
+	toObject(): any;
+	fromObject(data: any): void;
 }

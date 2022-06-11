@@ -1,34 +1,34 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect } from 'react';
 
 const useInstance = <T, PROPS>(
-  instanceConstructor: new () => T,
-  props: PROPS | undefined
+	instanceConstructor: new () => T,
+	props: PROPS | undefined
 ) => {
-  const vmRef: any = useRef(null);
+	const vmRef: any = useRef(null);
 
-  if (!vmRef.current) {
-    vmRef.current = new instanceConstructor();
-  }
+	if (!vmRef.current) {
+		vmRef.current = new instanceConstructor();
+	}
 
-  useEffect(() => {
-    if (typeof vmRef.current.init === "function") {
-      vmRef.current.init(props);
-    }
+	if (typeof vmRef.current.init === 'function') {
+		vmRef.current.init(props);
+	}
 
-    return () => {
-      if (typeof vmRef.current.dispose === "function") {
-        vmRef.current.dispose();
-      }
-    };
-  }, []);
+	useEffect(() => {
+		return () => {
+			if (typeof vmRef.current.dispose === 'function') {
+				vmRef.current.dispose();
+			}
+		};
+	}, []);
 
-  useEffect(() => {
-    if (typeof vmRef.current.update === "function") {
-      vmRef.current.update(props);
-    }
-  }, [props]);
+	useEffect(() => {
+		if (typeof vmRef.current.update === 'function') {
+			vmRef.current.update(props);
+		}
+	}, [props]);
 
-  return vmRef.current;
+	return vmRef.current;
 };
 
 export default useInstance;

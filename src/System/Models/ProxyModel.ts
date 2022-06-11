@@ -1,4 +1,4 @@
-import { createViewModel, IViewModel } from "mobx-utils";
+import { createViewModel, IViewModel } from 'mobx-utils';
 
 /**
  * fix for mobx-utils IViewModel interface
@@ -12,14 +12,14 @@ export type ProxyModel<T> = IViewModel<T> & T;
  * since ViewModel has a different meaning for me.
  */
 export const createProxyModel = <T extends object>(
-  modelInstance: T
+	modelInstance: T
 ): ProxyModel<T> => {
-  const proxyModel: ProxyModel<T> = createViewModel(modelInstance);
+	const proxyModel: ProxyModel<T> = createViewModel(modelInstance);
 
-  // decorators for class-validator and class-transformer
-  // are registered for the model's constructor, so in order
-  // for them to work as expected, need to override the constructor
-  proxyModel.constructor = modelInstance.constructor;
+	// decorators for class-validator and class-transformer
+	// are registered for the model's constructor, so in order
+	// for them to work as expected, need to override the constructor
+	proxyModel.constructor = modelInstance.constructor;
 
-  return proxyModel;
+	return proxyModel;
 };

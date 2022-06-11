@@ -19,11 +19,14 @@ class ContactViewModel {
     return this.contactForm.isValid() && this.contactForm.isDirty;
   }
 
-  constructor(props?: ContactViewModelProps) {
-    console.log("ContactViewModel Initialized", props);
+  constructor() {
     this.contactForm = createValidationProxyModel(new ContactVMForm());
 
     makeObservable(this);
+  }
+
+  init(props?: ContactViewModelProps) {
+    console.log("ContactViewModel mounted", props);
   }
 
   update(props: ContactViewModelProps) {

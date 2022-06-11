@@ -39,4 +39,4 @@ const Notifications = ({
   </FadeInOut>
 );
 
-export default withViewModel<{}, NotificationsViewModel, {}>(Notifications, NotificationsViewModel);
+export default withViewModel<NotificationsProps, NotificationsViewModel, {}>(Notifications, NotificationsViewModel);

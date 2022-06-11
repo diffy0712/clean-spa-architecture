@@ -3,7 +3,7 @@ import Notifier from "../../../System/Models/Notifier";
 class NotificationsViewModel {
   protected notifier = Notifier;
 
-  constructor() {
+  init() {
     this.notifier.notify({
       title: 'View Model mounted',
       type: 'info'

@@ -1,22 +1,26 @@
 import { useRef, useEffect } from "react";
 
 const useInstance = <T, PROPS>(
-  instanceConstructor: new (props: PROPS | undefined) => T,
+  instanceConstructor: new () => T,
   props: PROPS | undefined
 ) => {
   const vmRef: any = useRef(null);
 
   if (!vmRef.current) {
-    vmRef.current = new instanceConstructor(props);
+    vmRef.current = new instanceConstructor();
   }
 
   useEffect(() => {
+    if (typeof vmRef.current.init === "function") {
+      vmRef.current.init(props);
+    }
+
     return () => {
       if (typeof vmRef.current.dispose === "function") {
         vmRef.current.dispose();
       }
     };
-  }, [instanceConstructor]);
+  }, []);
 
   useEffect(() => {
     if (typeof vmRef.current.update === "function") {

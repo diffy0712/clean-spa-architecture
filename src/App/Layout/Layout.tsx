@@ -5,17 +5,19 @@ import styles from "./Layout.module.scss";
 import Notifications from "./Notifications/Notifications";
 
 const Layout = () => (
-  <Router>
-    <div className={styles.container}>
-      <Navigation />
-      <div className={styles.wrapper}>
-        <Notifications />
-        <div className={styles.mainContainer}>
-          <Routes />
+  <>
+    <Notifications />
+    <Router>
+      <div className={styles.container}>
+        <Navigation />
+        <div className={styles.wrapper}>
+          <div className={styles.mainContainer}>
+            <Routes />
+          </div>
         </div>
       </div>
-    </div>
-  </Router>
+    </Router>
+  </>
 );
 
 export default Layout;

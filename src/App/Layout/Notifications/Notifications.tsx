@@ -3,6 +3,7 @@ import { SnackbarProvider, withSnackbar } from 'notistack';
 import NotificationsViewModel, {
 	NotificationsViewModelProps,
 } from './NotificationsViewModel';
+import { Slide } from '@mui/material';
 
 const NotificationViewModel = withSnackbar(
 	withViewModel<
@@ -13,7 +14,13 @@ const NotificationViewModel = withSnackbar(
 );
 
 const NotificationWrapper = () => (
-	<SnackbarProvider>
+	<SnackbarProvider
+		anchorOrigin={{
+			vertical: 'bottom',
+			horizontal: 'right',
+		}}
+		TransitionComponent={Slide}
+	>
 		<NotificationViewModel />
 	</SnackbarProvider>
 );

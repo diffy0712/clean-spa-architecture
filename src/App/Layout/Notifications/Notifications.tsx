@@ -31,7 +31,8 @@ const Notifications = ({
 	</>
 );
 
-export default withViewModel<Record<string, unknown>, NotificationsViewModel, Record<string, unknown>>(
-	Notifications,
-	NotificationsViewModel
-);
+export default withViewModel<
+	Record<string, unknown>,
+	NotificationsViewModel,
+	Record<string, unknown>
+>(Notifications, NotificationsViewModel);

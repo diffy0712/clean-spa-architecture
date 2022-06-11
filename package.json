@@ -38,8 +38,10 @@
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
     "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.30.0",
     "jest": "28.1.1",
+    "prettier": "2.6.2",
     "react-test-renderer": "18.1.0",
     "sass-loader": "^13.0.0",
     "ts-jest": "28.0.2",
@@ -50,7 +52,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test:coverage": "react-scripts test --coverage --watchAll=false",
-		"lint": "eslint ./src --fix"
+    "lint": "eslint ./src --fix",
+    "format": "prettier --write ./src",
+		"style": "npm run lint && npm run format"
   },
   "browserslist": [
     ">0.2%",

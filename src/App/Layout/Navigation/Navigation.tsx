@@ -12,7 +12,9 @@ const Navigation = () => (
 				<NavLink
 					to="/"
 					className={({ isActive }) =>
-						classnames(styles.sidebarLink, { [styles.isActive]: isActive })
+						classnames(styles.sidebarLink, {
+							[styles.isActive]: isActive,
+						})
 					}
 				>
 					README
@@ -25,7 +27,9 @@ const Navigation = () => (
 				<NavLink
 					to="/counter"
 					className={({ isActive }) =>
-						classnames(styles.sidebarLink, { [styles.isActive]: isActive })
+						classnames(styles.sidebarLink, {
+							[styles.isActive]: isActive,
+						})
 					}
 				>
 					Counter
@@ -33,7 +37,9 @@ const Navigation = () => (
 				<NavLink
 					to="/contact"
 					className={({ isActive }) =>
-						classnames(styles.sidebarLink, { [styles.isActive]: isActive })
+						classnames(styles.sidebarLink, {
+							[styles.isActive]: isActive,
+						})
 					}
 				>
 					Contact Form
@@ -41,7 +47,9 @@ const Navigation = () => (
 				<NavLink
 					to="/contact-vm"
 					className={({ isActive }) =>
-						classnames(styles.sidebarLink, { [styles.isActive]: isActive })
+						classnames(styles.sidebarLink, {
+							[styles.isActive]: isActive,
+						})
 					}
 				>
 					Contact Form - ViewModel
@@ -49,7 +57,9 @@ const Navigation = () => (
 				<NavLink
 					to="/notifications"
 					className={({ isActive }) =>
-						classnames(styles.sidebarLink, { [styles.isActive]: isActive })
+						classnames(styles.sidebarLink, {
+							[styles.isActive]: isActive,
+						})
 					}
 				>
 					Notifications
@@ -62,7 +72,9 @@ const Navigation = () => (
 				<NavLink
 					to="/campaigns"
 					className={({ isActive }) =>
-						classnames(styles.sidebarLink, { [styles.isActive]: isActive })
+						classnames(styles.sidebarLink, {
+							[styles.isActive]: isActive,
+						})
 					}
 				>
 					Campaigns CRUD

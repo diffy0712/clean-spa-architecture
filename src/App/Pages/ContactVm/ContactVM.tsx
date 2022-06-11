@@ -37,12 +37,12 @@ const ContactVM = ({
 		<Alert severity="info" className="mb-4">
 			The same contact form as <Link to="/contact">Contact</Link>, but using a
 			ViewModel. All of the business logic of this component was extracted into
-			it&apos;s ViewModel class. This way the component and it&apos;s business logic are
-			decoupled.
+			it&apos;s ViewModel class. This way the component and it&apos;s business
+			logic are decoupled.
 		</Alert>
 		<Card className="relative">
 			<Backdrop open={viewModel.loading} className="absolute z-5" />
-			{fancy ? 'isFancy': 'notFancy'}
+			{fancy ? 'isFancy' : 'notFancy'}
 			<CardContent>
 				<div className="grid w-full">
 					<div className="col-6">

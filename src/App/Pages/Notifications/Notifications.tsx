@@ -46,7 +46,8 @@ const Notifications = ({
 	</FadeInOut>
 );
 
-export default withViewModel<NotificationsProps, NotificationsViewModel, Record<string, unknown>>(
-	Notifications,
-	NotificationsViewModel
-);
+export default withViewModel<
+	NotificationsProps,
+	NotificationsViewModel,
+	Record<string, unknown>
+>(Notifications, NotificationsViewModel);

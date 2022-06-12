@@ -80,10 +80,12 @@ const BindModel = <T extends object>({
 
 		value = executeTransformersToOut(value, prevValue, dataTransformers!);
 
-		if (value !== undefined) {
-			setProperty(model, property, value);
-			afterChange?.(model[property], prevValue);
+		if (value === undefined) {
+			return;
 		}
+
+		setProperty(model, property, value);
+		afterChange?.(model[property], prevValue);
 	};
 
 	return React.cloneElement(children, extraProps);

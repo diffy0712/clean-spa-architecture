@@ -1,14 +1,14 @@
-import { act } from 'react-test-renderer';
 import { render } from '@testing-library/react';
 import Layout from './Layout';
 
 describe('Layout tests', () => {
 	test('Check if component renders and calls methods', () => {
-		act(() => {
-			render(<Layout />);
-		});
+		render(<Layout />);
 	});
 
-	// TODO: test if navigation is drawn
-	// TODO: test if content is drawn
+	test('Check if layout blocks rendered', () => {
+		const { getByTestId } = render(<Layout />);
+		expect(getByTestId('layout-navigation')).not.toBeNull();
+		expect(getByTestId('layout-main-container')).not.toBeNull();
+	});
 });

@@ -10,7 +10,7 @@ const Layout = () => (
 		<Router>
 			<div className={styles.container}>
 				<Navigation />
-				<div className={styles.wrapper}>
+				<div className={styles.wrapper} data-testid="layout-main-container">
 					<div className={styles.mainContainer}>
 						<Routes />
 					</div>

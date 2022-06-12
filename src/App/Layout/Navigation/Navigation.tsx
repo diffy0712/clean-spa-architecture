@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import styles from './Navigation.module.scss';
 
 const Navigation = () => (
-	<div className={styles.sidebar}>
+	<div className={styles.sidebar} data-testid="layout-navigation">
 		<div className={styles.logo}>
 			<Link to="/">Clean SPA Architecture</Link>
 		</div>

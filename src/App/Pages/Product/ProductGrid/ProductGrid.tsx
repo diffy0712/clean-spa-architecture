@@ -1,5 +1,5 @@
 import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
-import { Card, CardContent } from '@mui/material';
+import { Card, CardContent, CardHeader } from '@mui/material';
 import { Link } from 'react-router-dom';
 import FadeInOut from '../../../../System/Components/Animations/FadeInOut/FadeInOut';
 
@@ -16,7 +16,7 @@ const columns: GridColDef[] = [
 		width: 150,
 		renderCell: (cellValues) => (
 			<>
-				<Link to={`/products/${cellValues.id}`}>View</Link>
+				<Link to={`/products/${cellValues.id}/view`}>View</Link>
 				<Link to={`/products/${cellValues.id}/edit`}>Edit</Link>
 			</>
 		),
@@ -28,6 +28,7 @@ const ProductGrid = () => (
 	<FadeInOut>
 		<Card>
 			<CardContent>
+				<Link to={'/products/info'}>Info</Link>
 				<div style={{ height: 300, width: '100%' }}>
 					<DataGrid rows={rows} columns={columns} />
 				</div>

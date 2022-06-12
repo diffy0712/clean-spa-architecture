@@ -19,13 +19,15 @@ export const createValidationProxy = <T extends object>(
 	model: T,
 	groups: string[] = []
 ): ValidationProxyType<T> => {
-	const errors: ValidationProxyErrors = observable({});
+	let errors: ValidationProxyErrors = observable({});
 
 	const validateModel = (validateModel_: T) => {
-		errors.all = validateSync(validateModel_, { groups: undefined });
+		const newErrors: ValidationProxyErrors = {};
+		newErrors.all = validateSync(validateModel_, { groups: [] });
 		groups.forEach((group) => {
-			errors[group] = validateSync(validateModel_, { groups: [group] });
+			newErrors[group] = validateSync(validateModel_, { groups: [group] });
 		});
+		errors = { ...newErrors };
 	};
 
 	const getPropertyErrors = (
@@ -40,7 +42,7 @@ export const createValidationProxy = <T extends object>(
 			return [];
 		}
 
-		return Object.keys(propertyError.constraints || {}).reduce(
+		return Object.keys(propertyError.constraints!).reduce(
 			(errors_: string[], key) => {
 				if (
 					propertyError &&
@@ -102,7 +104,7 @@ export const createValidationProxy = <T extends object>(
 				case 'isValid':
 					return isValid;
 				case 'validate':
-					return validateModel;
+					return validateModel.bind(obj);
 				case 'errors':
 					return errors;
 				default:

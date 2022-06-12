@@ -1,4 +1,4 @@
-import { IsEmail, MinLength } from 'class-validator';
+import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
 import { createValidationProxy } from './ValidationProxy';
 
 class ValidModel {
@@ -9,10 +9,27 @@ class ValidModel {
 	email = '';
 }
 
+class GroupModel {
+	@MinLength(2, {
+		message: 'Name must be at least 2 characters long!',
+		groups: ['advanced'],
+	})
+	@IsNotEmpty({ message: 'Must provide a name!', groups: ['simple'] })
+	name = '';
+
+	@IsEmail({}, { message: 'Not valid email format!' })
+	email = '';
+}
+
 describe('Test ValidationModel', () => {
 	test('Can Create Validation model', () => {
-		const validModel = new ValidModel();
-		expect(() => createValidationProxy(validModel)).not.toThrow();
+		const model = new ValidModel();
+		expect(() => createValidationProxy(model)).not.toThrow();
+	});
+
+	test('Can Create Validation model with groups', () => {
+		const model = new GroupModel();
+		expect(() => createValidationProxy(model)).not.toThrow();
 	});
 
 	test('Can modify property', () => {
@@ -21,6 +38,17 @@ describe('Test ValidationModel', () => {
 
 		model.name = 'Test name';
 		expect(model.name).toEqual('Test name');
+	});
+
+	test('Can modify property for group', () => {
+		const model = createValidationProxy(new ValidModel());
+		expect(model.name).toEqual('');
+
+		model.name = 'Test name';
+		expect(model.name).toEqual('Test name');
+
+		model.email = 'test@email.com';
+		expect(model.email).toEqual('test@email.com');
 	});
 
 	test('Has properties and methods', () => {
@@ -43,17 +71,40 @@ describe('Test ValidationModel', () => {
 		expect(model.errors.all.length).toEqual(2);
 	});
 
-	test('Validate on property set should not produce error', () => {
-		const model = createValidationProxy(new ValidModel());
-		// since we dont use groups yet. errors hould only have the all group
-		expect(Object.keys(model.errors).length).toEqual(1);
+	test('Validate on property set should produce error with groups', () => {
+		const model = createValidationProxy(new GroupModel(), [
+			'simple',
+			'advanced',
+		]);
+		// Should have: all, advanced, simple
+		expect(Object.keys(model.errors).length).toEqual(3);
 		expect(model.errors.all.length).toEqual(2);
+		expect(model.errors.advanced.length).toEqual(1);
+		expect(model.errors.simple.length).toEqual(1);
+
+		model.name = 'T';
+		expect(Object.keys(model.errors).length).toEqual(3);
+		expect(model.errors.all.length).toEqual(2);
+		expect(model.errors.advanced.length).toEqual(1);
+		expect(model.errors.simple.length).toEqual(0);
+	});
+
+	test('Validate on property set should not produce error', () => {
+		const model = createValidationProxy(new GroupModel(), [
+			'simple',
+			'advanced',
+		]);
+		expect(Object.keys(model.errors).length).toEqual(3);
 
 		model.name = 'Test Name';
 		expect(model.errors.all.length).toEqual(1);
+		expect(model.errors.advanced.length).toEqual(0);
+		expect(model.errors.simple.length).toEqual(0);
 
 		model.email = 'example@example.com';
 		expect(model.errors.all.length).toEqual(0);
+		expect(model.errors.advanced.length).toEqual(0);
+		expect(model.errors.simple.length).toEqual(0);
 	});
 
 	test('Is valid works with no groups', () => {
@@ -65,6 +116,31 @@ describe('Test ValidationModel', () => {
 
 		model.email = 'example@example.com';
 		expect(model.isValid()).toBeTruthy();
+	});
+
+	test('Is valid works with groups', () => {
+		const model = createValidationProxy(new GroupModel(), [
+			'simple',
+			'advanced',
+		]);
+		expect(model.isValid()).toBeFalsy();
+		expect(model.isValid(['simple'])).toBeFalsy();
+		expect(model.isValid(['advanced'])).toBeFalsy();
+
+		model.name = 'T';
+		expect(model.isValid()).toBeFalsy();
+		expect(model.isValid(['simple'])).toBeTruthy();
+		expect(model.isValid(['advanced'])).toBeFalsy();
+
+		model.name = 'Test';
+		expect(model.isValid()).toBeFalsy();
+		expect(model.isValid(['simple'])).toBeTruthy();
+		expect(model.isValid(['advanced'])).toBeTruthy();
+
+		model.email = 'example@example.com';
+		expect(model.isValid()).toBeTruthy();
+		expect(model.isValid(['simple'])).toBeTruthy();
+		expect(model.isValid(['advanced'])).toBeTruthy();
 	});
 
 	test('hasPropertyError works with no groups', () => {

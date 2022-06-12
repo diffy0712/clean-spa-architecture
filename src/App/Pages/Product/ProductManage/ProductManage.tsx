@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const ProductView = () => (
+const ProductManage = () => (
 	<Dialog
 		open
 		onClose={() => {
@@ -16,11 +16,10 @@ const ProductView = () => (
 		aria-labelledby="alert-dialog-title"
 		aria-describedby="alert-dialog-description"
 	>
-		<DialogTitle id="alert-dialog-title">View</DialogTitle>
+		<DialogTitle id="alert-dialog-title">Edit</DialogTitle>
 		<DialogContent>
 			<DialogContentText id="alert-dialog-description">
-				Let Google help apps determine location. This means sending anonymous
-				location data to Google, even when no apps are running.
+				EDIIIT
 			</DialogContentText>
 		</DialogContent>
 		<DialogActions>
@@ -29,4 +28,4 @@ const ProductView = () => (
 	</Dialog>
 );
 
-export default ProductView;
+export default ProductManage;

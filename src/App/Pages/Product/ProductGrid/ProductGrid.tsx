@@ -12,10 +12,13 @@ const rows: GridRowsProp = [
 const columns: GridColDef[] = [
 	{
 		field: 'col1',
-		headerName: 'Column 1',
+		headerName: 'Actions',
 		width: 150,
 		renderCell: (cellValues) => (
-			<Link to={`/products/${cellValues.id}`}>Print</Link>
+			<>
+				<Link to={`/products/${cellValues.id}`}>View</Link>
+				<Link to={`/products/${cellValues.id}/edit`}>Edit</Link>
+			</>
 		),
 	},
 	{ field: 'col2', headerName: 'Column 2', width: 150 },

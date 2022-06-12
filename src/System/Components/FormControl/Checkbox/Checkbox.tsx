@@ -10,6 +10,7 @@ import ControlledValidationModelProps from '../../Props/ControlledValidationMode
 
 type CheckboxProps = {
 	label?: string;
+	touchErrors?: boolean;
 } & ControlledValidationModelProps<
 	boolean,
 	React.ChangeEvent<HTMLInputElement>
@@ -19,12 +20,13 @@ type CheckboxProps = {
 const Checkbox = ({
 	label,
 	errors: propErrors,
+	touchErrors,
 	onChange,
 	value,
 	...props
 }: CheckboxProps) => {
 	const [isTouched, setIsTouched] = useState<boolean>(false);
-	const errors = isTouched ? propErrors : [];
+	const errors = isTouched || !touchErrors ? propErrors : [];
 
 	const checkbox = (
 		<>
@@ -51,15 +53,16 @@ const Checkbox = ({
 					label={label}
 					labelPlacement="end"
 					htmlFor={props.id}
+					data-testid="checkbox-label"
 				/>
 			)}
 
 			{!label && checkbox}
 
 			{errors && errors.length > 0 && (
-				<FormHelperText id="component-error-text">
+				<FormHelperText id="component-error-text" data-testid="checkbox-errors">
 					{errors?.map((error) => (
-						<Fragment key={error}>{error}</Fragment>
+						<span key={error}>{error}</span>
 					))}
 				</FormHelperText>
 			)}
@@ -69,6 +72,7 @@ const Checkbox = ({
 
 Checkbox.defaultProps = {
 	errors: [],
+	touchErrors: false,
 };
 
 export default Checkbox;

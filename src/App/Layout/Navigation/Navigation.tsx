@@ -70,6 +70,16 @@ const Navigation = () => (
 			<div className={styles.sideTitle}>Complex Examples</div>
 			<div className={styles.sideMenu}>
 				<NavLink
+					to="/products"
+					className={({ isActive }) =>
+						classnames(styles.sidebarLink, {
+							[styles.isActive]: isActive,
+						})
+					}
+				>
+					Products CRUD
+				</NavLink>
+				<NavLink
 					to="/campaigns"
 					className={({ isActive }) =>
 						classnames(styles.sidebarLink, {
@@ -77,7 +87,7 @@ const Navigation = () => (
 						})
 					}
 				>
-					Campaigns CRUD
+					Campaigns
 				</NavLink>
 			</div>
 		</div>

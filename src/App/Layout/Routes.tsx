@@ -11,12 +11,16 @@ const Notifications = React.lazy(
 const CampaignModule = React.lazy(
 	() => import('../Pages/Campaign/CampaignModule')
 );
+const ProductModule = React.lazy(
+	() => import('../Pages/Product/ProductModule')
+);
 import Loader from '../../System/Components/Loader/Loader';
 
 const Routes = () => {
 	const location = useLocation();
 	const modules: [string, ReactElement][] = [
 		['/campaigns', <CampaignModule key="campaigns" />],
+		['/products', <ProductModule key="products" />],
 	];
 
 	// With the location.pathname defined as key, when navigating between
@@ -28,16 +32,17 @@ const Routes = () => {
 	// Using animations this problem is visible. Just return the location.pathname as key :)
 	const getLocationKey = () => {
 		const module = modules.find(
-			(module) => location.pathname.indexOf(module[0]) > 0
+			(module) => location.pathname.indexOf(module[0]) >= 0
 		);
-		return module ? module[0] : location.pathname;
+		const key = module ? module[0] : location.pathname;
+		return key;
 	};
 
 	return (
-		<AnimatePresence exitBeforeEnter>
-			<Suspense fallback={<Loader />}>
+		<Suspense fallback={<Loader />}>
+			<AnimatePresence exitBeforeEnter>
 				<RouterRoutes location={location} key={getLocationKey()}>
-					<Route path="/" element={<Home />} />
+					<Route index element={<Home />} />
 					<Route path="/counter" element={<Counter />} />
 					<Route path="/contact" element={<Contact />} />
 					<Route
@@ -60,8 +65,8 @@ const Routes = () => {
 						/>
 					))}
 				</RouterRoutes>
-			</Suspense>
-		</AnimatePresence>
+			</AnimatePresence>
+		</Suspense>
 	);
 };
 export default Routes;

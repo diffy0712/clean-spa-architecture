@@ -6,7 +6,7 @@ import {
 	Input as MUIInput,
 } from '@mui/material';
 import { ChangeEvent, Fragment, useState } from 'react';
-import ControlledValidationModelProps from '../../Props/ControlledValidationModelProps';
+import ControlledValidationModelProps from '@System/Components/Props/ControlledValidationModelProps';
 
 type InputProps<T> = {
 	label?: string;

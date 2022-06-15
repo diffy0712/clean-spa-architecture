@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
-import Notifications from './Notifications';
-import NotificationsViewModel from './NotificationsViewModel';
+import Notifications from '@App/Pages/Notifications/Notifications';
+import NotificationsViewModel from '@App/Pages/Notifications/NotificationsViewModel';
 
 describe('Notifications Page tests', () => {
 	test('Can render Notifications component', () => {

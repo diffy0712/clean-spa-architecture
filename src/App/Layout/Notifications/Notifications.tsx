@@ -1,8 +1,8 @@
-import withViewModel from '../../../System/Components/Hoc/withViewModel';
+import withViewModel from '@System/Components/Hoc/withViewModel';
 import { SnackbarProvider, withSnackbar } from 'notistack';
 import NotificationsViewModel, {
 	NotificationsViewModelProps,
-} from './NotificationsViewModel';
+} from '@App/Layout/Notifications/NotificationsViewModel';
 import { Slide } from '@mui/material';
 
 const NotificationViewModel = withSnackbar(

@@ -1,4 +1,4 @@
-import FadeInOut from '../../../System/Components/Animations/FadeInOut/FadeInOut';
+import FadeInOut from '@System/Components/Animations/FadeInOut/FadeInOut';
 import { Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import ProductGrid from './ProductGrid/ProductGrid';

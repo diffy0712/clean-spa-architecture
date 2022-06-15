@@ -1,7 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 import { ChangeEvent } from 'react';
-import { sleep } from '../../../Utils/async';
-import Checkbox from './Checkbox';
+import Checkbox from '@System/Components/FormControl/Checkbox/Checkbox';
 
 describe('Checkbox test suite', () => {
 	test('Can render Checkbox component', async () => {

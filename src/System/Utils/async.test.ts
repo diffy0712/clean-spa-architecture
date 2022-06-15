@@ -1,4 +1,4 @@
-import { sleep } from './async';
+import { sleep } from '@System/Utils/async';
 import { DateTime } from 'luxon';
 
 describe('Async test suite', () => {

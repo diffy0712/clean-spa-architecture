@@ -4,7 +4,7 @@ import {
 	SnackbarKey,
 	SnackbarMessage,
 } from 'notistack';
-import Notifier, { Notification } from '../../../System/Models/Notifier';
+import Notifier, { Notification } from '@System/Models/Notifier';
 
 export class NotificationsViewModelProps implements ProviderContext {
 	enqueueSnackbar: (
@@ -19,12 +19,9 @@ class NotificationsViewModel {
 
 	protected notifier = Notifier;
 
-	constructor() {
-		Notifier.subscribe(this.notify.bind(this));
-	}
-
 	init(props: NotificationsViewModelProps) {
 		this.props = props;
+		Notifier.subscribe(this.notify.bind(this));
 	}
 
 	dispose() {

@@ -1,6 +1,6 @@
-import ModelFactory from './ModelFactory';
-import SerializableModel from './SerializableModel';
-import { UniqueModel } from './UniqueModel';
+import ModelFactory from '@System/Models/Factory/ModelFactory';
+import SerializableModel from '@System/Models/Factory/SerializableModel';
+import { UniqueModel } from '@System/Models/Factory/UniqueModel';
 
 class TestModel implements UniqueModel, SerializableModel {
 	id?: string;

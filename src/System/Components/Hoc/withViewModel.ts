@@ -1,6 +1,6 @@
 import React, { FC, useRef } from 'react';
 import { observer } from 'mobx-react-lite';
-import useInstance from '../Hooks/useInstance';
+import useInstance from '@System/Components/Hooks/useInstance';
 
 export interface WithViewModelProps<T> {
 	viewModel: T;

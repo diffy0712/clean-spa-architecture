@@ -1,7 +1,7 @@
 import withViewModel, {
 	WithViewModelProps,
-} from '../../../System/Components/Hoc/withViewModel';
-import FadeInOut from '../../../System/Components/Animations/FadeInOut/FadeInOut';
+} from '@System/Components/Hoc/withViewModel';
+import FadeInOut from '@System/Components/Animations/FadeInOut/FadeInOut';
 import { HTMLMotionProps } from 'framer-motion';
 import {
 	Alert,

@@ -1,6 +1,8 @@
 import { observer } from 'mobx-react-lite';
-import { ValidationProxyType } from '../../Models/ValidationProxy';
-import BindModel, { BindModelProps } from './BindModel';
+import { ValidationProxyType } from '@System/Models/ValidationProxy';
+import BindModel, {
+	BindModelProps,
+} from '@System/Components/BindModel/BindModel';
 
 export type BindValidationModelProps<T> = BindModelProps<T>;
 

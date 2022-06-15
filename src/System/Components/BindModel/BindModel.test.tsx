@@ -1,14 +1,14 @@
 import { act } from 'react-test-renderer';
 import { fireEvent, render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import BindModel from './BindModel';
-import Input from '../FormControl/Input/Input';
 import { makeObservable, observable } from 'mobx';
-import TrimDataTransformer from '../../DataTransformers/TrimDataTransformer';
-import Checkbox from '../FormControl/Checkbox/Checkbox';
 import { IsIn } from 'class-validator';
 import { FC } from 'react';
-import ControlledModelProps from '../Props/ControlledModelProps';
+import userEvent from '@testing-library/user-event';
+import BindModel from '@System/Components/BindModel/BindModel';
+import Input from '@System/Components/FormControl/Input/Input';
+import TrimDataTransformer from '@System/DataTransformers/TrimDataTransformer';
+import Checkbox from '@System/Components/FormControl/Checkbox/Checkbox';
+import ControlledModelProps from '@System/Components/Props/ControlledModelProps';
 
 class ValidModel {
 	@observable

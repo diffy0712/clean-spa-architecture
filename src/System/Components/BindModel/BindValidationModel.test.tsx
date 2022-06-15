@@ -1,12 +1,12 @@
-import Input from '../FormControl/Input/Input';
+import { act } from 'react-test-renderer';
+import { IsIn, MinLength } from 'class-validator';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { makeObservable, observable } from 'mobx';
-import Checkbox from '../FormControl/Checkbox/Checkbox';
-import { IsIn, MinLength } from 'class-validator';
-import BindValidationModel from './BindValidationModel';
-import { createValidationProxy } from '../../Models/ValidationProxy';
-import { act } from 'react-test-renderer';
+import Checkbox from '@System/Components/FormControl/Checkbox/Checkbox';
+import Input from '@System/Components/FormControl/Input/Input';
+import BindValidationModel from '@System/Components/BindModel/BindValidationModel';
+import { createValidationProxy } from '@System/Models/ValidationProxy';
 
 class ValidModel {
 	@observable

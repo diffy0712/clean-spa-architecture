@@ -1,7 +1,7 @@
 import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
-import { Card, CardContent, CardHeader } from '@mui/material';
+import { Card, CardContent } from '@mui/material';
 import { Link } from 'react-router-dom';
-import FadeInOut from '../../../../System/Components/Animations/FadeInOut/FadeInOut';
+import FadeInOut from '@System/Components/Animations/FadeInOut/FadeInOut';
 
 const rows: GridRowsProp = [
 	{ id: 1, col1: 'Hello', col2: 'World' },

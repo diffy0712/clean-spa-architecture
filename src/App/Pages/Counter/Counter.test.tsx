@@ -1,7 +1,7 @@
 import { act } from 'react-test-renderer';
 import { render, fireEvent, screen } from '@testing-library/react';
-import Counter from './Counter';
-import CounterState from './CounterState';
+import Counter from '@App/Pages/Counter/Counter';
+import CounterState from '@App/Pages/Counter/CounterState';
 
 const decrementStepMock = jest.spyOn(CounterState, 'decrementStep');
 const incrementStepMock = jest.spyOn(CounterState, 'incrementStep');

@@ -1,4 +1,4 @@
-import Notifier, { Notification } from './Notifier';
+import Notifier, { Notification } from '@System/Models/Notifier';
 
 describe('Test Notifier', () => {
 	test('Subscribed callback called on notify', () => {

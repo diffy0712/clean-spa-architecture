@@ -1,5 +1,5 @@
 import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
-import { createValidationProxy } from './ValidationProxy';
+import { createValidationProxy } from '@System/Models/ValidationProxy';
 
 class ValidModel {
 	@MinLength(2, { message: 'Name must be at least 2 characters long!' })

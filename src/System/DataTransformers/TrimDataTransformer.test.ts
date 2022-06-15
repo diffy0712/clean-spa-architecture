@@ -1,4 +1,4 @@
-import TrimDataTransformer from './TrimDataTransformer';
+import TrimDataTransformer from '@System/DataTransformers/TrimDataTransformer';
 
 afterEach(() => {
 	jest.resetAllMocks();

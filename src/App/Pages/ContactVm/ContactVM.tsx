@@ -1,10 +1,10 @@
-import Input from '../../../System/Components/FormControl/Input/Input';
+import Input from '@System/Components/FormControl/Input/Input';
 import ContactViewModel, { ContactViewModelProps } from './ContactViewModel';
 import withViewModel, {
 	WithViewModelProps,
-} from '../../../System/Components/Hoc/withViewModel';
-import TrimDataTransformer from '../../../System/DataTransformers/TrimDataTransformer';
-import FadeInOut from '../../../System/Components/Animations/FadeInOut/FadeInOut';
+} from '@System/Components/Hoc/withViewModel';
+import TrimDataTransformer from '@System/DataTransformers/TrimDataTransformer';
+import FadeInOut from '@System/Components/Animations/FadeInOut/FadeInOut';
 import { HTMLMotionProps } from 'framer-motion';
 import {
 	Alert,
@@ -16,8 +16,8 @@ import {
 	Chip,
 	Typography,
 } from '@mui/material';
-import BindValidationModel from '../../../System/Components/BindModel/BindValidationModel';
-import Checkbox from '../../../System/Components/FormControl/Checkbox/Checkbox';
+import BindValidationModel from '@System/Components/BindModel/BindValidationModel';
+import Checkbox from '@System/Components/FormControl/Checkbox/Checkbox';
 import { LoadingButton } from '@mui/lab';
 import { CelebrationOutlined } from '@mui/icons-material';
 

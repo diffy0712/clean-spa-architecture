@@ -1,5 +1,5 @@
 import { makeObservable, observable } from 'mobx';
-import { createProxyModel } from './ProxyModel';
+import { createProxyModel } from '@System/Models/ProxyModel';
 
 class InValidModel {
 	name = '';

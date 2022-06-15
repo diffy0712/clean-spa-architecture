@@ -1,5 +1,5 @@
 import { Expose } from 'class-transformer';
-import BaseSerializableModel from './BaseSerializableModel';
+import BaseSerializableModel from '@System/Models/BaseSerializableModel';
 
 class SerializableMockModel extends BaseSerializableModel {
 	@Expose()

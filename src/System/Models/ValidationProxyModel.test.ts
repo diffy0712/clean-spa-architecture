@@ -1,8 +1,8 @@
 import { IsEmail, MinLength } from 'class-validator';
 import { makeObservable, observable } from 'mobx';
-import * as ProxyModel from './ProxyModel';
-import * as ValidationProxy from './ValidationProxy';
-import { createValidationProxyModel } from './ValidationProxyModel';
+import * as ProxyModel from '@System/Models/ProxyModel';
+import * as ValidationProxy from '@System/Models/ValidationProxy';
+import { createValidationProxyModel } from '@System/Models/ValidationProxyModel';
 
 class ValidModel {
 	@observable

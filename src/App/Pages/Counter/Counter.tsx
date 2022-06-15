@@ -1,6 +1,6 @@
 import CounterCount from './CounterCount';
 import CounterSteps from './CounterSteps';
-import FadeInOut from '../../../System/Components/Animations/FadeInOut/FadeInOut';
+import FadeInOut from '@System/Components/Animations/FadeInOut/FadeInOut';
 import { Alert } from '@mui/material';
 
 const Counter = () => {

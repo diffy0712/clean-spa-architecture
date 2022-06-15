@@ -1,4 +1,4 @@
-import Notifier from '../../../System/Models/Notifier';
+import Notifier from '@System/Models/Notifier';
 
 class NotificationsViewModel {
 	protected notifier = Notifier;

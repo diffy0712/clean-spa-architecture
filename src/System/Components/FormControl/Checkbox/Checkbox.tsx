@@ -5,8 +5,8 @@ import {
 	FormGroup,
 	FormControlLabel,
 } from '@mui/material';
-import { ChangeEvent, Fragment, useState } from 'react';
-import ControlledValidationModelProps from '../../Props/ControlledValidationModelProps';
+import { ChangeEvent, useState } from 'react';
+import ControlledValidationModelProps from '@System/Components/Props/ControlledValidationModelProps';
 
 type CheckboxProps = {
 	label?: string;

@@ -1,20 +1,20 @@
 import { Routes as RouterRoutes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import React, { ReactElement, Suspense } from 'react';
-const Home = React.lazy(() => import('../Pages/Home/Home'));
-const Counter = React.lazy(() => import('../Pages/Counter/Counter'));
-const Contact = React.lazy(() => import('../Pages/Contact/Contact'));
-const ContactVM = React.lazy(() => import('../Pages/ContactVm/ContactVM'));
+const Home = React.lazy(() => import('@App/Pages/Home/Home'));
+const Counter = React.lazy(() => import('@App/Pages/Counter/Counter'));
+const Contact = React.lazy(() => import('@App/Pages/Contact/Contact'));
+const ContactVM = React.lazy(() => import('@App/Pages/ContactVm/ContactVM'));
 const Notifications = React.lazy(
-	() => import('../Pages/Notifications/Notifications')
+	() => import('@App/Pages/Notifications/Notifications')
 );
 const CampaignModule = React.lazy(
-	() => import('../Pages/Campaign/CampaignModule')
+	() => import('@App/Pages/Campaign/CampaignModule')
 );
 const ProductModule = React.lazy(
-	() => import('../Pages/Product/ProductModule')
+	() => import('@App/Pages/Product/ProductModule')
 );
-import Loader from '../../System/Components/Loader/Loader';
+import Loader from '@System/Components/Loader/Loader';
 
 const Routes = () => {
 	const location = useLocation();

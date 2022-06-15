@@ -1,8 +1,8 @@
 import { BrowserRouter as Router } from 'react-router-dom';
-import Navigation from './Navigation/Navigation';
-import Routes from './Routes';
+import Navigation from '@App/Layout/Navigation/Navigation';
+import Routes from '@App/Layout/Routes';
+import Notifications from '@App/Layout/Notifications/Notifications';
 import styles from './Layout.module.scss';
-import Notifications from './Notifications/Notifications';
 
 const Layout = () => (
 	<>

@@ -1,4 +1,4 @@
-import FadeInOut from '../../../System/Components/Animations/FadeInOut/FadeInOut';
+import FadeInOut from '@System/Components/Animations/FadeInOut/FadeInOut';
 
 const CampaignModule = () => <FadeInOut>Campaign</FadeInOut>;
 

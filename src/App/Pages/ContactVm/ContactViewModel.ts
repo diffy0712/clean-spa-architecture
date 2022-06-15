@@ -1,9 +1,10 @@
 import { makeObservable, observable } from 'mobx';
-import Notifier from '../../../System/Models/Notifier';
+import Notifier from '@System/Models/Notifier';
 import {
 	createValidationProxyModel,
 	ValidationProxyModel,
-} from '../../../System/Models/ValidationProxyModel';
+} from '@System/Models/ValidationProxyModel';
+import { sleep } from '@System/Utils/async';
 import ContactVMForm from './ContactVMForm';
 
 export class ContactViewModelProps {
@@ -63,7 +64,7 @@ class ContactViewModel {
 
 		this.loading = true;
 
-		await new Promise((r) => setTimeout(r, 2000));
+		await sleep(1500);
 
 		this.contactForm.submit();
 

@@ -1,4 +1,4 @@
-import useInstance from './useInstance';
+import useInstance from '@System/Components/Hooks/useInstance';
 import { fireEvent, render } from '@testing-library/react';
 import { FC, useState } from 'react';
 

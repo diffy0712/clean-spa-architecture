@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import Layout from './Layout';
+import Layout from '@App/Layout/Layout';
 
 describe('Layout tests', () => {
 	test('Check if component renders and calls methods', () => {

@@ -1,7 +1,7 @@
 import { Expose } from 'class-transformer';
 import { IsEmail, IsIn, MinLength } from 'class-validator';
 import { makeObservable, observable } from 'mobx';
-import BaseSerializableModel from '../../../System/Models/BaseSerializableModel';
+import BaseSerializableModel from '@System/Models/BaseSerializableModel';
 
 class ContactVMForm extends BaseSerializableModel {
 	@observable

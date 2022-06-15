@@ -1,7 +1,7 @@
 import { runInAction } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import React, { ReactElement } from 'react';
-import DataTransformerInterface from '../../DataTransformers/DataTransformerInterface';
+import DataTransformerInterface from '@System/DataTransformers/DataTransformerInterface';
 
 function setProperty<T>(model: T, property: keyof T, value: any) {
 	runInAction(() => {

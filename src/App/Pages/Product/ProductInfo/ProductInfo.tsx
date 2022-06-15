@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import FadeInOut from '../../../../System/Components/Animations/FadeInOut/FadeInOut';
+import FadeInOut from '@System/Components/Animations/FadeInOut/FadeInOut';
 
 const ProductInfo = () => (
 	<FadeInOut>

@@ -1,8 +1,8 @@
 import { act } from 'react-test-renderer';
-import { queryByAttribute, render } from '@testing-library/react';
-import Notifications from './Notifications';
-import Notifier from '../../../System/Models/Notifier';
-import { NotificationsViewModelProps } from './NotificationsViewModel';
+import { render } from '@testing-library/react';
+import Notifications from '@App/Layout/Notifications/Notifications';
+import Notifier from '@System/Models/Notifier';
+import { NotificationsViewModelProps } from '@App/Layout/Notifications/NotificationsViewModel';
 
 describe('Notifications component tests', () => {
 	test('Just for coverage', async () => {

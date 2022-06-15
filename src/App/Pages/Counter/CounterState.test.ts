@@ -1,4 +1,4 @@
-import CounterState from './CounterState';
+import CounterState from '@App/Pages/Counter/CounterState';
 
 afterEach(() => {
 	jest.resetAllMocks();

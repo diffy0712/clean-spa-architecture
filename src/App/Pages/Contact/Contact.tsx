@@ -1,14 +1,5 @@
 import { observer } from 'mobx-react-lite';
 import { useRef, useState } from 'react';
-import ContactForm from './ContactForm';
-import Input from '../../../System/Components/FormControl/Input/Input';
-import Checkbox from '../../../System/Components/FormControl/Checkbox/Checkbox';
-import BindValidationModel from '../../../System/Components/BindModel/BindValidationModel';
-import FadeInOut from '../../../System/Components/Animations/FadeInOut/FadeInOut';
-import {
-	createProxyModel,
-	ProxyModel,
-} from '../../../System/Models/ProxyModel';
 
 import {
 	Alert,
@@ -21,10 +12,17 @@ import {
 	Backdrop,
 } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
+import Input from '@System/Components/FormControl/Input/Input';
+import Checkbox from '@System/Components/FormControl/Checkbox/Checkbox';
+import BindValidationModel from '@System/Components/BindModel/BindValidationModel';
+import FadeInOut from '@System/Components/Animations/FadeInOut/FadeInOut';
+import { createProxyModel, ProxyModel } from '@System/Models/ProxyModel';
+import { sleep } from '@System/Utils/async';
 import {
 	createValidationProxy,
 	ValidationProxyType,
-} from '../../../System/Models/ValidationProxy';
+} from '@System/Models/ValidationProxy';
+import ContactForm from './ContactForm';
 
 const Contact = () => {
 	const [loading, setLoading] = useState<boolean>(false);
@@ -60,7 +58,7 @@ const Contact = () => {
 		setLoading(true);
 
 		// simulate some api call
-		await new Promise((r) => setTimeout(r, 2000));
+		await sleep(1500);
 		contactForm.current.submit();
 
 		setLoading(false);

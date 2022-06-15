@@ -1,10 +1,23 @@
+import { Button, Typography, Alert } from '@mui/material';
 import { Link } from 'react-router-dom';
 import FadeInOut from '@System/Components/Animations/FadeInOut/FadeInOut';
+import { ChevronLeft } from '@mui/icons-material';
 
 const ProductInfo = () => (
 	<FadeInOut>
-		INFO
-		<Link to={'/products'}>Back to list</Link>
+		<div className="grid mb-4">
+			<div className="col-6">
+				<Typography variant="h5">About Products</Typography>
+			</div>
+			<div className="col-6 text-right">
+				<Link to="/products">
+					<Button variant="contained" startIcon={<ChevronLeft />}>
+						Back To Products
+					</Button>
+				</Link>
+			</div>
+		</div>
+		<Alert severity="info">Products are noice.</Alert>
 	</FadeInOut>
 );
 

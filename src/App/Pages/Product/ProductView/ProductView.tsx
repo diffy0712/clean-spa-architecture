@@ -1,3 +1,4 @@
+import { history } from '@App/history';
 import {
 	Dialog,
 	DialogActions,
@@ -11,7 +12,7 @@ const ProductView = () => (
 	<Dialog
 		open
 		onClose={() => {
-			console.log('lcose');
+			history.push('/products');
 		}}
 		aria-labelledby="alert-dialog-title"
 		aria-describedby="alert-dialog-description"

@@ -12,11 +12,31 @@ import ControlledModelProps from '@System/Components/Props/ControlledModelProps'
 
 class ValidModel {
 	@observable
-	name = '';
+	_name = '';
+
+	get name(): string {
+		return this._name;
+	}
+
+	set name(value: string) {
+		this._name = value;
+	}
 
 	@observable
 	@IsIn([true], { message: 'You must an adult!' })
 	adult = false;
+
+	@observable
+	protected _license = '';
+
+	get license(): string {
+		return this._license;
+	}
+
+	setLicense(value: string): void {
+		this._license = value;
+		this.adult = true;
+	}
 
 	constructor() {
 		makeObservable(this);
@@ -130,5 +150,27 @@ describe('BindModel test suite', () => {
 
 		fireEvent.click(customElement!);
 		expect(model.adult).toBeFalsy();
+	});
+
+	test('Calling setter', async () => {
+		const model = new ValidModel();
+		const setterMock = jest.spyOn(model, 'setLicense');
+
+		const { getByTestId } = render(
+			<BindModel model={model} property="license" setter="setLicense">
+				<Input data-testid="testInput" />
+			</BindModel>
+		);
+
+		const inputElement = getByTestId('testInput').querySelector(
+			'input'
+		) as HTMLInputElement;
+		userEvent.type(inputElement, 'test', { delay: 2 });
+		await new Promise((r) => setTimeout(r, 300));
+		expect(model.license).toEqual('test');
+		expect(inputElement.value).toEqual('test');
+
+		expect(setterMock).toBeCalledTimes(4);
+		expect(setterMock).toBeCalledWith('test');
 	});
 });

@@ -3,9 +3,13 @@ import { observer } from 'mobx-react-lite';
 import React, { ReactElement } from 'react';
 import DataTransformerInterface from '@System/DataTransformers/DataTransformerInterface';
 
-function setProperty<T>(model: T, property: keyof T, value: any) {
+function setProperty<T>(model: T, propertyOrSetter: keyof T, value: any) {
 	runInAction(() => {
-		model[property] = value;
+		if (typeof model[propertyOrSetter] === 'function') {
+			(model[propertyOrSetter] as unknown as (value: keyof T) => void)(value);
+		} else {
+			model[propertyOrSetter] = value;
+		}
 	});
 }
 
@@ -43,6 +47,7 @@ export type BindModelProps<T> = {
 	extraProps?: Record<string, any>;
 	dataTransformers?: DataTransformerInterface<unknown, unknown>[];
 	afterChange?: (value: any, prevValue: any) => void;
+	setter?: keyof T;
 };
 
 const BindModel = <T extends object>({
@@ -52,6 +57,7 @@ const BindModel = <T extends object>({
 	afterChange,
 	dataTransformers,
 	children,
+	setter,
 }: BindModelProps<T>) => {
 	if (!extraProps) {
 		extraProps = {};
@@ -84,7 +90,7 @@ const BindModel = <T extends object>({
 			return;
 		}
 
-		setProperty(model, property, value);
+		setProperty(model, setter ?? property, value);
 		afterChange?.(model[property], prevValue);
 	};
 

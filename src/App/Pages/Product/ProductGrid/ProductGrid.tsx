@@ -68,20 +68,22 @@ const ProductGrid = () => (
 				<Typography variant="h5">Products</Typography>
 			</div>
 			<div className="col-6 text-right">
-				<Link to="/products/info">
-					<IconButton
-						aria-label="About Products"
-						component="span"
-						className="mr-4"
-					>
-						<QuestionMark />
-					</IconButton>
-				</Link>
-				<Link to="/products/create">
-					<Button variant="contained" startIcon={<Add />}>
-						Add Product
-					</Button>
-				</Link>
+				<IconButton
+					aria-label="About Products"
+					className="mr-4"
+					component={Link}
+					to="/products/info"
+				>
+					<QuestionMark />
+				</IconButton>
+				<Button
+					variant="contained"
+					component={Link}
+					to="/products/create"
+					startIcon={<Add />}
+				>
+					Add Product
+				</Button>
 			</div>
 		</div>
 		<Card>

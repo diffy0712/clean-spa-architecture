@@ -10,11 +10,14 @@ const ProductInfo = () => (
 				<Typography variant="h5">About Products</Typography>
 			</div>
 			<div className="col-6 text-right">
-				<Link to="/products">
-					<Button variant="contained" startIcon={<ChevronLeft />}>
-						Back To Products
-					</Button>
-				</Link>
+				<Button
+					variant="contained"
+					component={Link}
+					to="/products"
+					startIcon={<ChevronLeft />}
+				>
+					Back To Products
+				</Button>
 			</div>
 		</div>
 		<Alert severity="info">Products are noice.</Alert>

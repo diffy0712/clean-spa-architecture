@@ -87,10 +87,6 @@ const BindModel = <T extends object>({
 
 		value = executeTransformersToOut(value, prevValue, dataTransformers!);
 
-		if (value === undefined) {
-			return;
-		}
-
 		setProperty(model, setter ?? property, value);
 		afterChange?.(model[property], prevValue);
 	};

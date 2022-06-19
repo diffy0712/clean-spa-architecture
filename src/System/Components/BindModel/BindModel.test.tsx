@@ -9,6 +9,7 @@ import Input from '@System/Components/FormControl/Input/Input';
 import TrimDataTransformer from '@System/DataTransformers/TrimDataTransformer';
 import Checkbox from '@System/Components/FormControl/Checkbox/Checkbox';
 import ControlledModelProps from '@System/Components/Props/ControlledModelProps';
+import { sleep } from '@System/Utils/async';
 
 class ValidModel {
 	@observable
@@ -61,7 +62,7 @@ describe('BindModel test suite', () => {
 			'input'
 		) as HTMLInputElement;
 		userEvent.type(inputElement, 'test', { delay: 2 });
-		await new Promise((r) => setTimeout(r, 300));
+		await sleep(150);
 		expect(model.name).toEqual('test');
 		expect(inputElement.value).toEqual('test');
 	});
@@ -88,12 +89,12 @@ describe('BindModel test suite', () => {
 		const inputElement = getByTestId('testInput').querySelector(
 			'input'
 		) as HTMLInputElement;
+
 		userEvent.type(inputElement, '  test', { delay: 2 });
-		await new Promise((r) => setTimeout(r, 300));
+		await sleep(150);
 		expect(model.name).toEqual('test');
 		expect(inputElement.value).toEqual('test');
 
-		// FIXME: why do the toIn runs onyl 5 times?
 		expect(transformToInSpy).toBeCalledTimes(5);
 		expect(transformToOutSpy).toBeCalledTimes(6);
 	});
@@ -111,14 +112,10 @@ describe('BindModel test suite', () => {
 			'input'
 		) as HTMLInputElement;
 
-		act(() => {
-			fireEvent.click(checkboxElement);
-		});
+		fireEvent.click(checkboxElement);
 		expect(model.adult).toBeTruthy();
 
-		act(() => {
-			fireEvent.click(checkboxElement);
-		});
+		fireEvent.click(checkboxElement);
 		expect(model.adult).toBeFalsy();
 	});
 

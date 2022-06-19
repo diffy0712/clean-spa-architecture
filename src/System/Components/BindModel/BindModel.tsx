@@ -2,6 +2,7 @@ import { runInAction } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import React, { ReactElement } from 'react';
 import DataTransformerInterface from '@System/DataTransformers/DataTransformerInterface';
+import ControlledModelProps from '@System/Components/Props/ControlledModelProps';
 
 function setProperty<T>(model: T, propertyOrSetter: keyof T, value: any) {
 	runInAction(() => {
@@ -43,7 +44,7 @@ const executeTransformersToOut = (
 export type BindModelProps<T> = {
 	model: T;
 	property: keyof T;
-	children: ReactElement;
+	children: ReactElement<ControlledModelProps<unknown>>;
 	extraProps?: Record<string, any>;
 	dataTransformers?: DataTransformerInterface<unknown, unknown>[];
 	afterChange?: (value: any, prevValue: any) => void;

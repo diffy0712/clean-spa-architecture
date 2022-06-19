@@ -1,9 +1,12 @@
 import { render } from '@testing-library/react';
 import Layout from '@App/Layout/Layout';
+import { act } from 'react-test-renderer';
 
 describe('Layout tests', () => {
-	test('Check if component renders and calls methods', () => {
-		render(<Layout />);
+	test('Check if component renders and calls methods', async () => {
+		await act(() => {
+			render(<Layout />);
+		});
 	});
 
 	test('Check if layout blocks rendered', () => {

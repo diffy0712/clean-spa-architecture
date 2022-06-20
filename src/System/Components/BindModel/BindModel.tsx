@@ -21,7 +21,7 @@ const executeTransformersToIn = (
 	let transformedValue = newValue;
 
 	transformers.forEach((transformer) => {
-		transformedValue = transformer.transformToIn(newValue);
+		transformedValue = transformer.transformToIn(transformedValue);
 	});
 
 	return transformedValue;
@@ -35,7 +35,7 @@ const executeTransformersToOut = (
 	let transformedValue = newValue;
 
 	transformers.forEach((transformer) => {
-		transformedValue = transformer.transformToOut(newValue, oldValue);
+		transformedValue = transformer.transformToOut(transformedValue, oldValue);
 	});
 
 	return transformedValue;

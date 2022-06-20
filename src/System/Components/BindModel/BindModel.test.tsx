@@ -7,6 +7,7 @@ import userEvent from '@testing-library/user-event';
 import BindModel from '@System/Components/BindModel/BindModel';
 import Input from '@System/Components/FormControl/Input/Input';
 import TrimDataTransformer from '@System/DataTransformers/TrimDataTransformer';
+import DataTransformerInterface from '@System/DataTransformers/DataTransformerInterface';
 import Checkbox from '@System/Components/FormControl/Checkbox/Checkbox';
 import ControlledModelProps from '@System/Components/Props/ControlledModelProps';
 import { sleep } from '@System/Utils/async';
@@ -61,7 +62,7 @@ describe('BindModel test suite', () => {
 		const inputElement = getByTestId('testInput').querySelector(
 			'input'
 		) as HTMLInputElement;
-		userEvent.type(inputElement, 'test', { delay: 2 });
+		await userEvent.type(inputElement, 'test', { delay: 2 });
 		await sleep(150);
 		expect(model.name).toEqual('test');
 		expect(inputElement.value).toEqual('test');
@@ -97,6 +98,45 @@ describe('BindModel test suite', () => {
 
 		expect(transformToInSpy).toBeCalledTimes(5);
 		expect(transformToOutSpy).toBeCalledTimes(6);
+	});
+
+	test('Uses multiple data transofmers in correct order', async () => {
+		const model = new ValidModel();
+
+		class TestingDataTransformer
+			implements DataTransformerInterface<string, string>
+		{
+			constructor(protected symbol: string) {}
+
+			transformToIn(newValue: string | null | undefined): string {
+				return newValue || '';
+			}
+			transformToOut(newValue: string | null | undefined): string {
+				return (newValue || '') + this.symbol;
+			}
+		}
+
+		const { getByTestId } = render(
+			<BindModel
+				model={model}
+				property="name"
+				dataTransformers={[
+					new TestingDataTransformer('3'),
+					new TestingDataTransformer('2'),
+					new TestingDataTransformer('1'),
+				]}
+			>
+				<Input data-testid="testInput" label="Test" />
+			</BindModel>
+		);
+
+		const inputElement = getByTestId('testInput').querySelector(
+			'input'
+		) as HTMLInputElement;
+
+		await userEvent.type(inputElement, 't');
+		await sleep(150);
+		expect(model.name).toEqual('t321');
 	});
 
 	test('Works with checkbox input', async () => {

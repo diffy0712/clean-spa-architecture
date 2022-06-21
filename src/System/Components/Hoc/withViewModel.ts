@@ -12,7 +12,9 @@ const withViewModel = <
 	VIEW_MODEL_PROPS = unknown
 >(
 	BaseComponent: FC<WithViewModelProps<VIEW_MODEL_CLASS> & COMPONENT_PROPS>,
-	ViewModelConstructor: new () => VIEW_MODEL_CLASS,
+	ViewModelConstructor: new (
+		props: VIEW_MODEL_PROPS | undefined
+	) => VIEW_MODEL_CLASS,
 	propsClass?: (new () => VIEW_MODEL_PROPS) | undefined
 ): FC<COMPONENT_PROPS & VIEW_MODEL_PROPS> => {
 	const component = (props: COMPONENT_PROPS & VIEW_MODEL_PROPS) => {

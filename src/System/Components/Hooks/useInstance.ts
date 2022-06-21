@@ -1,13 +1,13 @@
 import { useRef, useEffect } from 'react';
 
 const useInstance = <T, PROPS>(
-	instanceConstructor: new () => T,
+	instanceConstructor: new (props: PROPS | undefined) => T,
 	props: PROPS | undefined
 ) => {
 	const vmRef: any = useRef(null);
 
 	if (!vmRef.current) {
-		vmRef.current = new instanceConstructor();
+		vmRef.current = new instanceConstructor(props);
 	}
 
 	useEffect(() => {

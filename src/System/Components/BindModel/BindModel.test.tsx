@@ -63,7 +63,7 @@ describe('BindModel test suite', () => {
 			'input'
 		) as HTMLInputElement;
 		await userEvent.type(inputElement, 'test', { delay: 2 });
-		await sleep(150);
+		await sleep(200);
 		expect(model.name).toEqual('test');
 		expect(inputElement.value).toEqual('test');
 	});

@@ -18,6 +18,7 @@
 		"class-validator": "0.13.2",
 		"classnames": "2.3.1",
 		"framer-motion": "6.3.10",
+		"identity-obj-proxy": "^3.0.0",
 		"jest-canvas-mock": "^2.4.0",
 		"luxon": "^2.4.0",
 		"mobx": "6.6.0",
@@ -48,6 +49,7 @@
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-react": "^7.30.0",
 		"jest": "28.1.1",
+		"jest-environment-jsdom": "^28.1.1",
 		"prettier": "2.6.2",
 		"react-app-alias": "^2.2.0",
 		"react-app-rewired": "^2.2.1",
@@ -59,8 +61,8 @@
 	"scripts": {
 		"start": "react-app-rewired start",
 		"build": "react-app-rewired build",
-		"test": "react-app-rewired test --env=jsdom",
-		"test:coverage": "react-app-rewired test --coverage --watchAll=false",
+		"test": "jest --watch --env=jsdom",
+		"test:coverage": "jest --coverage -ci -all --watchAll=false",
 		"lint": "eslint ./src --fix",
 		"format": "prettier --write ./src",
 		"style": "npm run lint && npm run format"
@@ -70,12 +72,5 @@
 		"not dead",
 		"not ie <= 11",
 		"not op_mini all"
-	],
-	"jest": {
-		"collectCoverageFrom": [
-			"src/**/*.{ts,tsx}",
-			"!src/index.tsx",
-			"!src/App/index.tsx"
-		]
-	}
+	]
 }

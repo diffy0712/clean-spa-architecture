@@ -65,7 +65,7 @@ const BindModel = <T extends object>({
 	}
 
 	extraProps.value = executeTransformersToIn(
-		model?.[property],
+		model[property],
 		dataTransformers!
 	);
 

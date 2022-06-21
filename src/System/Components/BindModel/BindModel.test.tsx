@@ -202,12 +202,33 @@ describe('BindModel test suite', () => {
 		const inputElement = getByTestId('testInput').querySelector(
 			'input'
 		) as HTMLInputElement;
-		userEvent.type(inputElement, 'test', { delay: 2 });
+		await userEvent.type(inputElement, 'test', { delay: 2 });
 		await new Promise((r) => setTimeout(r, 300));
 		expect(model.license).toEqual('test');
 		expect(inputElement.value).toEqual('test');
 
 		expect(setterMock).toBeCalledTimes(4);
 		expect(setterMock).toBeCalledWith('test');
+	});
+
+	test('Calls afterChange', async () => {
+		const model = new ValidModel();
+		const afterChangeMock = jest.fn(() => true);
+
+		const { getByTestId } = render(
+			<BindModel model={model} property="name" afterChange={afterChangeMock}>
+				<Input data-testid="testInput" />
+			</BindModel>
+		);
+
+		const inputElement = getByTestId('testInput').querySelector(
+			'input'
+		) as HTMLInputElement;
+		await userEvent.type(inputElement, 'test', { delay: 2 });
+		await sleep(300);
+		expect(model.name).toEqual('test');
+		expect(inputElement.value).toEqual('test');
+
+		expect(afterChangeMock).toBeCalledTimes(4);
 	});
 });

@@ -33,7 +33,6 @@ class ContactViewModel {
 
 	init(props: ContactViewModelProps) {
 		this.props = props;
-		console.log('ContactViewModel mounted', props);
 	}
 
 	onLoadFromJson() {

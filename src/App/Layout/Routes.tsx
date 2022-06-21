@@ -51,7 +51,7 @@ const Routes = () => {
 							<ContactVM
 								fancy
 								onChange={(value) => {
-									console.log(value);
+									console.info(value);
 								}}
 							/>
 						}

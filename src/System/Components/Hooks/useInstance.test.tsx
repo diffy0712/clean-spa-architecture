@@ -4,15 +4,15 @@ import { FC, useState } from 'react';
 
 class TestInstance {
 	constructor() {
-		console.log('constructor');
+		console.info('constructor');
 	}
 
 	update() {
-		console.log('update');
+		console.info('update');
 	}
 
 	dispose() {
-		console.log('dispose');
+		console.info('dispose');
 	}
 }
 
@@ -37,7 +37,7 @@ describe('UseInstance hook test', () => {
 	let textSpan: HTMLSpanElement;
 	let incrementButton: HTMLButtonElement;
 
-	const constructorMock = jest.spyOn(console, 'log');
+	const constructorMock = jest.spyOn(console, 'info');
 
 	let container: ReturnType<typeof render>;
 

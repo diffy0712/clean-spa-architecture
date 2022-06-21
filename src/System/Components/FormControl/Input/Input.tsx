@@ -30,7 +30,6 @@ const Input = <T extends string | number | readonly string[]>({
 	const onTouchedBlur = (
 		event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => {
-		console.log('bluring he');
 		setIsTouched(true);
 		onBlur?.(event);
 	};

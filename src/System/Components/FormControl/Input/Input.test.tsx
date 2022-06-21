@@ -103,7 +103,6 @@ describe('Input test suite', () => {
 			/>
 		);
 
-		debug();
 		await sleep(50);
 		expect(queryByTestId('testInput-errors')).not.toBeNull();
 		expect(queryByText('Error1')).not.toBeNull();

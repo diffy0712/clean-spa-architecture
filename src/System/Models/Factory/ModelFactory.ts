@@ -24,12 +24,12 @@ class ModelFactory {
 		}
 
 		if (store.has(uniqueId) && !override) {
-			return store?.get(uniqueId) as T;
+			return store.get(uniqueId) as T;
 		}
 
-		store?.set(uniqueId, instance);
+		store.set(uniqueId, instance);
 
-		return store?.get(uniqueId) as T;
+		return store.get(uniqueId) as T;
 	}
 
 	get<T extends UniqueModel>(

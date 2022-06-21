@@ -19,7 +19,7 @@ const Notifications = ({
 	viewModel,
 	...props
 }: WithViewModelProps<NotificationsViewModel> & NotificationsProps) => (
-	<FadeInOut {...props}>
+	<FadeInOut data-testid="page-notifications" {...props}>
 		<div className="w-full mb-4">
 			<Typography variant="h5">Notifications</Typography>
 		</div>

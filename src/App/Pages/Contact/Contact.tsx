@@ -65,7 +65,7 @@ const Contact = () => {
 	};
 
 	return (
-		<FadeInOut>
+		<FadeInOut data-testid="page-contact">
 			<div className="w-full mb-4">
 				<Typography variant="h5">Get In Touch With Us</Typography>
 			</div>

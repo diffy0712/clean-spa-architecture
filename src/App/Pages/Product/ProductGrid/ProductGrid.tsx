@@ -62,7 +62,7 @@ const columns: GridColDef[] = [
 ];
 
 const ProductGrid = () => (
-	<FadeInOut>
+	<FadeInOut data-testid="module-product-grid">
 		<div className="grid mb-4">
 			<div className="col-6">
 				<Typography variant="h5">Products</Typography>

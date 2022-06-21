@@ -7,9 +7,7 @@ import {
 import { sleep } from '@System/Utils/async';
 import ContactVMForm from './ContactVMForm';
 
-export class ContactViewModelProps {
-	onChange?: (value: ContactVMForm) => void = undefined;
-}
+export class ContactViewModelProps {}
 
 class ContactViewModel {
 	public contactForm: ValidationProxyModel<ContactVMForm>;
@@ -71,8 +69,6 @@ class ContactViewModel {
 			title: 'Form submitted',
 			type: 'success',
 		});
-
-		this.props?.onChange?.(this.contactForm);
 
 		this.loading = false;
 	}

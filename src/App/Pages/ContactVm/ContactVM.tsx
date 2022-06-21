@@ -21,19 +21,16 @@ import Checkbox from '@System/Components/FormControl/Checkbox/Checkbox';
 import { LoadingButton } from '@mui/lab';
 import { CelebrationOutlined } from '@mui/icons-material';
 
-type ContactVMProps = {
-	fancy?: boolean;
-} & HTMLMotionProps<'div'>;
+type ContactVMProps = HTMLMotionProps<'div'>;
 
 const ContactVM = ({
-	fancy,
 	viewModel,
 	...props
 }: WithViewModelProps<ContactViewModel> & ContactVMProps) => (
-	<FadeInOut {...props}>
+	<FadeInOut data-testid="page-contact-vm" {...props}>
 		<div className="w-full mb-4">
 			<Typography variant="h5">
-				Get In Touch With Us {fancy && <CelebrationOutlined />}
+				Get In Touch With Us <CelebrationOutlined />
 			</Typography>
 		</div>
 		<Alert severity="info" className="mb-4">
@@ -148,10 +145,6 @@ const ContactVM = ({
 		</Card>
 	</FadeInOut>
 );
-
-ContactVM.defaultProps = {
-	fancy: false,
-};
 
 export default withViewModel<
 	ContactVMProps,

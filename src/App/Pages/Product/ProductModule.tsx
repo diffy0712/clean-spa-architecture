@@ -7,7 +7,7 @@ import ProductManage from './ProductManage/ProductManage';
 import ProductInfo from './ProductInfo/ProductInfo';
 
 const ProductModule = () => (
-	<FadeInOut>
+	<FadeInOut data-testid="module-product">
 		<AnimatePresence exitBeforeEnter>
 			<Routes>
 				<Route path="/info" element={<ProductInfo />} />

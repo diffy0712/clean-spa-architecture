@@ -16,6 +16,7 @@ const ProductView = () => (
 		}}
 		aria-labelledby="alert-dialog-title"
 		aria-describedby="alert-dialog-description"
+		data-testid="module-product-view"
 	>
 		<DialogTitle id="alert-dialog-title">View</DialogTitle>
 		<DialogContent>

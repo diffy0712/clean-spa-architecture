@@ -5,7 +5,7 @@ import { Alert } from '@mui/material';
 
 const Counter = () => {
 	return (
-		<FadeInOut>
+		<FadeInOut data-testid="page-counter">
 			<Alert severity="info">
 				Count will be increased or decreased by the value of `step`.
 			</Alert>

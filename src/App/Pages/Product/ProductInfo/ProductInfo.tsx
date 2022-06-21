@@ -4,7 +4,7 @@ import FadeInOut from '@System/Components/Animations/FadeInOut/FadeInOut';
 import { ChevronLeft } from '@mui/icons-material';
 
 const ProductInfo = () => (
-	<FadeInOut>
+	<FadeInOut data-testid="module-product-info">
 		<div className="grid mb-4">
 			<div className="col-6">
 				<Typography variant="h5">About Products</Typography>

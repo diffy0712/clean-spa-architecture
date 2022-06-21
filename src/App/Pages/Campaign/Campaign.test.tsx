@@ -1,9 +1,13 @@
-import { act } from 'react-test-renderer';
 import { render } from '@testing-library/react';
 import CampaignModule from '@App/Pages/Campaign/CampaignModule';
+import { expectNavigationToRouteRendersTestId } from '@Tests/Utils/Routing.test';
 
-test('Can render CampaignModule component', () => {
-	act(() => {
+describe('CampaignModule page', () => {
+	test('Can render Campaign module', () => {
 		render(<CampaignModule />);
+	});
+
+	test('Can navigate to campaign module page', async () => {
+		expectNavigationToRouteRendersTestId('/campaigns', 'module-campaign'); // should add the list too
 	});
 });

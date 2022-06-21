@@ -1,9 +1,7 @@
-import { act } from 'react-test-renderer';
-import { render } from '@testing-library/react';
-// import ProductModule from '@App/Pages/Product/ProductModule';
+import { expectNavigationToRouteRendersTestId } from '@Tests/Utils/Routing.test';
 
-test('Can render ProductModule component', () => {
-	act(() => {
-		render(<div />);
+describe('ProductModule tests', () => {
+	test('Can navigate to product module page', async () => {
+		expectNavigationToRouteRendersTestId('/products', 'module-product'); // should add the list too
 	});
 });

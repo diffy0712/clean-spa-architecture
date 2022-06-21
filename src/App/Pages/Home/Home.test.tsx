@@ -1,9 +1,12 @@
-import { act } from 'react-test-renderer';
 import { render } from '@testing-library/react';
-import Home from '@App/Pages/Home/Home';
+import { expectNavigationToRouteRendersTestId } from '@Tests/Utils/Routing.test';
+import Home from './Home';
 
-test('Can render Home component', () => {
-	act(() => {
+describe('Home page', () => {
+	test('Can render Home component', () => {
 		render(<Home />);
+	});
+	test('Can navigate to home page', async () => {
+		expectNavigationToRouteRendersTestId('/', 'page-home');
 	});
 });

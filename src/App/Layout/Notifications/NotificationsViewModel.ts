@@ -15,12 +15,12 @@ export class NotificationsViewModelProps implements ProviderContext {
 }
 
 class NotificationsViewModel {
-	protected props?: NotificationsViewModelProps;
+	protected props: NotificationsViewModelProps;
 
 	protected notifier = Notifier;
 
-	init(props: NotificationsViewModelProps) {
-		this.props = props;
+	constructor(props?: NotificationsViewModelProps) {
+		this.props = props!;
 		Notifier.subscribe(this.notify.bind(this));
 	}
 
@@ -29,7 +29,7 @@ class NotificationsViewModel {
 	}
 
 	notify(notification: Notification) {
-		this.props?.enqueueSnackbar(notification.title, {
+		this.props.enqueueSnackbar(notification.title, {
 			variant: notification.type,
 		});
 	}

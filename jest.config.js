@@ -5,14 +5,18 @@ const { compilerOptions } = require('./tsconfig');
 
 const config = {
 	maxWorkers: 5,
-	testMatch: ['<rootDir>/src/**/*.test.(ts|tsx)'],
-	setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+	testMatch: [
+		'<rootDir>/src/App/**/*.test.(ts|tsx)',
+		'<rootDir>/src/System/**/*.test.(ts|tsx)',
+	],
+	setupFilesAfterEnv: ['<rootDir>/src/Tests/setupTests.ts'],
 	collectCoverageFrom: [
 		'**/*.{ts,tsx}',
 		'!<rootDir>/node_modules',
 		'!<rootDir>/src/*.{ts,tsx}',
 		'!<rootDir>/src/App/*.{ts,tsx}',
 		'!<rootDir>/src/System/*.{ts,tsx}',
+		'!<rootDir>/src/Tests/**/*',
 	],
 	coverageReporters: ['lcov', 'cobertura'],
 	reporters: ['default'],

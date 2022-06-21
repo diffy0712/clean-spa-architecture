@@ -10,7 +10,7 @@ const FadeInOut: FC<FadeInOutProps> = ({ transition, delay, ...props }) => (
 		initial={{ opacity: 0 }}
 		animate={{ opacity: 1 }}
 		exit={{ opacity: 0 }}
-		transition={{ delay: ((delay ?? 0) + 1) * 0.1, ...transition }}
+		transition={{ delay: ((delay as number) + 1) * 0.1, ...transition }}
 		{...props}
 	/>
 );

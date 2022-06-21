@@ -48,7 +48,7 @@ const Input = <T extends string | number | readonly string[]>({
 			<MUIInput
 				type="text"
 				onChange={(event: ChangeEvent<HTMLInputElement>) => {
-					onChange?.(event);
+					onChange!(event);
 				}}
 				minRows={2}
 				maxRows={10}
@@ -61,7 +61,7 @@ const Input = <T extends string | number | readonly string[]>({
 					id="form-control-input-errors"
 					data-testid={`${dataTestId}-errors`}
 				>
-					{errors?.map((error) => (
+					{errors.map((error) => (
 						<span key={error}>{error}</span>
 					))}
 				</FormHelperText>

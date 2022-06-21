@@ -123,4 +123,27 @@ describe('Input test suite', () => {
 
 		expect(queryByTestId('testInput-errors')).toBeNull();
 	});
+
+	test('Render Input component can use onBlur prop (as it is overriden by Input)', async () => {
+		const inputOnChangeMock = jest.fn(() => true);
+		const onBlurMock = jest.fn(() => true);
+		const { getByTestId } = render(
+			<Input
+				value="test"
+				onChange={inputOnChangeMock}
+				data-testid="testInput"
+				onBlur={onBlurMock}
+			/>
+		);
+
+		const inputElement = getByTestId('testInput').querySelector(
+			'input'
+		) as HTMLInputElement;
+		await act(() => {
+			inputElement.focus();
+			inputElement.blur();
+		});
+
+		expect(onBlurMock).toBeCalledTimes(1);
+	});
 });

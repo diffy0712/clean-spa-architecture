@@ -36,7 +36,7 @@ const Checkbox = ({
 						setIsTouched(true);
 					}
 
-					onChange?.(event);
+					onChange!(event);
 				}}
 				aria-describedby="component-error-text"
 				checked={value}
@@ -61,7 +61,7 @@ const Checkbox = ({
 
 			{errors && errors.length > 0 && (
 				<FormHelperText id="component-error-text" data-testid="checkbox-errors">
-					{errors?.map((error) => (
+					{errors.map((error) => (
 						<span key={error}>{error}</span>
 					))}
 				</FormHelperText>

@@ -13,7 +13,7 @@ const NotificationViewModel = withSnackbar(
 	>(() => null, NotificationsViewModel, NotificationsViewModelProps)
 );
 
-const NotificationWrapper = () => (
+const Notifications = () => (
 	<SnackbarProvider
 		anchorOrigin={{
 			vertical: 'bottom',
@@ -26,4 +26,4 @@ const NotificationWrapper = () => (
 	</SnackbarProvider>
 );
 
-export default NotificationWrapper;
+export default Notifications;

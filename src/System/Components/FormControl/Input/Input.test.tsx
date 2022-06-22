@@ -93,7 +93,7 @@ describe('Input test suite', () => {
 
 	test('Render Input component with errors and touchError disabled', async () => {
 		const inputOnChangeMock = jest.fn(() => true);
-		const { queryByText, queryByTestId, getByTestId, debug } = render(
+		const { queryByText, queryByTestId } = render(
 			<Input
 				value="test"
 				data-testid="testInput"

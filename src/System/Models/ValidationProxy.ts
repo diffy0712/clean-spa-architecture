@@ -1,7 +1,7 @@
-import { observable } from 'mobx';
+import {observable} from 'mobx';
 import {
-	validateSync,
 	getMetadataStorage,
+	validateSync,
 	ValidationError,
 } from 'class-validator';
 
@@ -78,7 +78,7 @@ export const createValidationProxy = <T extends object>(
 	};
 
 	const propertyShouldTriggerValidation = (property: string): boolean => {
-		// FIXME: the validationMetadatas is a private method, but I really needed it. so find an alternative solution
+		// NOTE validationMetadatas is a private method, but I really needed it. so find an alternative solution
 		const GetMetadataStorage: any = getMetadataStorage;
 		const modelValidations = GetMetadataStorage().validationMetadatas.filter(
 			(data: any) => data.target === model.constructor
@@ -86,8 +86,7 @@ export const createValidationProxy = <T extends object>(
 		const modelValidationGroupsByPropertyName = Object.keys(
 			modelValidations
 		).reduce((carry: any, key: any) => {
-			const modelPropertyValidationGroups = modelValidations[key].groups;
-			carry[modelValidations[key].propertyName] = modelPropertyValidationGroups;
+			carry[modelValidations[key].propertyName] = modelValidations[key].groups;
 			return carry;
 		}, {});
 

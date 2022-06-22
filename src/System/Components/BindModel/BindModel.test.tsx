@@ -1,4 +1,3 @@
-import { act } from 'react-test-renderer';
 import { fireEvent, render } from '@testing-library/react';
 import { makeObservable, observable } from 'mobx';
 import { IsIn } from 'class-validator';
@@ -185,7 +184,7 @@ describe('BindModel test suite', () => {
 		fireEvent.click(customElement);
 		expect(customElement).toBeTruthy();
 
-		fireEvent.click(customElement!);
+		fireEvent.click(customElement);
 		expect(model.adult).toBeFalsy();
 	});
 

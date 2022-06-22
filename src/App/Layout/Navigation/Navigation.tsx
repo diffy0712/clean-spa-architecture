@@ -2,6 +2,11 @@ import { Link, NavLink } from 'react-router-dom';
 import classnames from 'classnames';
 import styles from './Navigation.module.scss';
 
+const navLinkClassNamesCallback = ({ isActive }) =>
+	classnames(styles.sidebarLink, {
+		[styles.isActive]: isActive,
+	})
+
 const Navigation = () => (
 	<div className={styles.sidebar} data-testid="layout-navigation">
 		<div className={styles.logo}>
@@ -11,11 +16,7 @@ const Navigation = () => (
 			<div className={styles.sideMenu}>
 				<NavLink
 					to="/"
-					className={({ isActive }) =>
-						classnames(styles.sidebarLink, {
-							[styles.isActive]: isActive,
-						})
-					}
+					className={navLinkClassNamesCallback}
 				>
 					README
 				</NavLink>
@@ -26,41 +27,25 @@ const Navigation = () => (
 			<div className={styles.sideMenu}>
 				<NavLink
 					to="/counter"
-					className={({ isActive }) =>
-						classnames(styles.sidebarLink, {
-							[styles.isActive]: isActive,
-						})
-					}
+					className={navLinkClassNamesCallback}
 				>
 					Counter
 				</NavLink>
 				<NavLink
 					to="/contact"
-					className={({ isActive }) =>
-						classnames(styles.sidebarLink, {
-							[styles.isActive]: isActive,
-						})
-					}
+					className={navLinkClassNamesCallback}
 				>
 					Contact Form
 				</NavLink>
 				<NavLink
 					to="/contact-vm"
-					className={({ isActive }) =>
-						classnames(styles.sidebarLink, {
-							[styles.isActive]: isActive,
-						})
-					}
+					className={navLinkClassNamesCallback}
 				>
 					Contact Form - ViewModel
 				</NavLink>
 				<NavLink
 					to="/notifications"
-					className={({ isActive }) =>
-						classnames(styles.sidebarLink, {
-							[styles.isActive]: isActive,
-						})
-					}
+					className={navLinkClassNamesCallback}
 				>
 					Notifications
 				</NavLink>
@@ -71,21 +56,13 @@ const Navigation = () => (
 			<div className={styles.sideMenu}>
 				<NavLink
 					to="/products"
-					className={({ isActive }) =>
-						classnames(styles.sidebarLink, {
-							[styles.isActive]: isActive,
-						})
-					}
+					className={navLinkClassNamesCallback}
 				>
 					Products CRUD
 				</NavLink>
 				<NavLink
 					to="/campaigns"
-					className={({ isActive }) =>
-						classnames(styles.sidebarLink, {
-							[styles.isActive]: isActive,
-						})
-					}
+					className={navLinkClassNamesCallback}
 				>
 					Campaigns
 				</NavLink>

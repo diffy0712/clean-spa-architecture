@@ -51,18 +51,7 @@ describe('BindValidationModel test suite', () => {
 		await new Promise((r) => setTimeout(r, 400));
 		expect(model.name).toEqual('test');
 		expect(inputElement.value).toEqual('test');
-
-		// todo: check if errors are passed down to inputs
-
-		// expect(model.isValid()).toBeFalsy();
-		// expect(model.hasPropertyError('name')).toBeFalsy();
-		// expect(model.hasPropertyError('adult')).toBeTruthy();
-
-		// const customElement = getByTestId('testAdult') as HTMLDivElement;
-		// fireEvent.click(customElement);
-		// expect(customElement).toBeTruthy();
-
-		// fireEvent.click(customElement!);
-		// expect(model.adult).toBeFalsy();
 	});
+
+	test.todo('check if errors are passed down to inputs');
 });

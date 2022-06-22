@@ -1,6 +1,8 @@
-import { Routes as RouterRoutes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
-import React, { ReactElement, Suspense } from 'react';
+import {Route, Routes as RouterRoutes, useLocation} from 'react-router-dom';
+import {AnimatePresence} from 'framer-motion';
+import React, {ReactElement, Suspense} from 'react';
+import Loader from '@System/Components/Loader/Loader';
+
 const Home = React.lazy(() => import('@App/Pages/Home/Home'));
 const Counter = React.lazy(() => import('@App/Pages/Counter/Counter'));
 const Contact = React.lazy(() => import('@App/Pages/Contact/Contact'));
@@ -14,7 +16,6 @@ const CampaignModule = React.lazy(
 const ProductModule = React.lazy(
 	() => import('@App/Pages/Product/ProductModule')
 );
-import Loader from '@System/Components/Loader/Loader';
 
 const Routes = () => {
 	const location = useLocation();
@@ -32,10 +33,9 @@ const Routes = () => {
 	// Using animations this problem is visible. Just return the location.pathname as key :)
 	const getLocationKey = () => {
 		const module = modules.find(
-			(module) => location.pathname.indexOf(module[0]) >= 0
+			(_module) => location.pathname.indexOf(_module[0]) >= 0
 		);
-		const key = module ? module[0] : location.pathname;
-		return key;
+		return module ? module[0] : location.pathname;
 	};
 
 	return (

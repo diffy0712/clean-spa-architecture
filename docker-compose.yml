@@ -1,0 +1,16 @@
+services:
+  nodejs:
+    image: node:18.4.0-buster-slim
+    command: sh -lc "npm install && npm start"
+    working_dir: /app
+    environment:
+      VIRTUAL_HOST: cspaa.test
+      VIRTUAL_PORT: 3000
+    volumes:
+      - ./:/app
+    networks:
+      - development-environment_shared
+
+networks:
+  development-environment_shared:
+    external: true

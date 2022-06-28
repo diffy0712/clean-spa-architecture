@@ -3,7 +3,7 @@ import {
 	DetailedHTMLProps,
 	HTMLAttributes,
 	useCallback,
-	MouseEvent, useState
+	MouseEvent, useState, useMemo
 } from "react";
 
 export type PopConfirmProps =  {
@@ -13,6 +13,13 @@ export type PopConfirmProps =  {
 
 const PopConfirm: FC<PopConfirmProps> = ({children, onClick: inputOnClick, modal, popover, ...props}) => {
 	const [visible, setVisible] = useState<boolean>(false);
+	const variant = useMemo(() => {
+		if (modal) {
+			return 'modal';
+		}
+
+		return 'popover';
+	}, [modal, popover]);
 
 	const onClick = useCallback((event: MouseEvent<HTMLSpanElement>) => {
 		setVisible(true);
@@ -26,10 +33,10 @@ const PopConfirm: FC<PopConfirmProps> = ({children, onClick: inputOnClick, modal
 			</span>
 			{visible && (
 				<>
-					{modal && (
+					{variant === 'modal' && (
 						<PopConfirmWithModal />
 					)}
-					{popover && !modal && (
+					{variant === 'popover' && (
 						<PopConfirmWithPopover/>
 					)}
 				</>
@@ -38,20 +45,20 @@ const PopConfirm: FC<PopConfirmProps> = ({children, onClick: inputOnClick, modal
 	);
 };
 
-PopConfirm.defaultProps = {
-	modal: false,
-	popover: true,
-}
-
 export default PopConfirm;
 
-type PopConfirmWithPopoverProps =  DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>;
+type PopConfirmVariantProps = {
+	title?: string;
+	content?: string;
+} & DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+
+type PopConfirmWithPopoverProps =  PopConfirmVariantProps;
 
 const PopConfirmWithPopover: FC<PopConfirmWithPopoverProps> = ({...props}) => (
 	<span data-testid="popconfirm-popover-wrapper" {...props}></span>
 );
 
-type PopConfirmWithModalProps =  DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>;
+type PopConfirmWithModalProps =  PopConfirmVariantProps;
 
 const PopConfirmWithModal: FC<PopConfirmWithModalProps> = ({...props}) => (
 	<span data-testid="popconfirm-modal-wrapper" {...props}></span>

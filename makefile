@@ -25,7 +25,7 @@ analyze: ## Run Sonarcube analyzer
 		-Dsonar.projectKey=Clean-Spa-Architecture \
 		-Dsonar.sources=src \
 		-Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info \
-		-Dsonar.host.url=http://localhost:9000 \
+		-Dsonar.host.url=http://sonarcube.test \
 		-Dsonar.login=sqp_0dd92137e9bca52fec1d50d54bec271c10c417f7 \
 		-Dsonar.exclusions=src/**/*.test.*
 

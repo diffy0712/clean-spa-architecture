@@ -20,14 +20,23 @@ class PopConfirmViewModel {
 		return this._visible;
 	}
 
+	@observable
+	protected _variant?: string;
+
 	@computed
-	get variant(): PopConfirmVariants {
+	get variant() {
+		return this._variant;
+	}
+
+	protected setVariant() {
 		if (this.props?.modal) {
-			return 'modal';
+			this._variant = 'modal';
+			return;
 		}
 
 		if (this.props?.popover) {
-			return 'popover';
+			this._variant = 'popover';
+			return;
 		}
 
 		throw new Error('PopConfirm variant not found!');
@@ -35,6 +44,7 @@ class PopConfirmViewModel {
 
 	constructor(props?: PopConfirmViewModelProps) {
 		this.props = props;
+		this.setVariant();
 		makeObservable(this);
 	}
 

@@ -17,6 +17,8 @@ const config = {
 		'!<rootDir>/src/App/*.{ts,tsx}',
 		'!<rootDir>/src/System/*.{ts,tsx}',
 		'!<rootDir>/src/Tests/**/*',
+		'!<rootDir>/src/stories/**/*.stories.mdx',
+		'!<rootDir>/src/stories/**/*.stories.@(js|jsx|ts|tsx)',
 	],
 	coverageReporters: ['lcov', 'cobertura'],
 	reporters: ['default'],

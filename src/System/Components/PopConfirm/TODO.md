@@ -1,3 +1,4 @@
+ - [x] Refactor to use ViewModel
  - [ ] Create Factory
  - [ ] Define common props
  - [ ] Implement popover version

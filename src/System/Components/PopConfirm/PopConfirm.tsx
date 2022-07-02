@@ -1,65 +1,42 @@
-import {
-	FC,
-	DetailedHTMLProps,
-	HTMLAttributes,
-	useCallback,
-	MouseEvent, useState, useMemo
-} from "react";
+import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import withViewModel, {
+	WithViewModelProps,
+} from '@System/Components/Hoc/withViewModel';
+import PopConfirmViewModel, {
+	PopConfirmViewModelProps,
+} from '@System/Components/PopConfirm/PopConfirmViewModel';
+import PopConfirmWithModal from '@System/Components/PopConfirm/Variants/PopConfirmWithModal';
+import PopConfirmWithPopover from '@System/Components/PopConfirm/Variants/PopConfirmWithPopover';
 
-export type PopConfirmProps =  {
-	modal?: boolean;
-	popover?: boolean;
-} & DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>;
+export type PopConfirmProps = Omit<
+	DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>,
+	'onClick'
+>;
 
-const PopConfirm: FC<PopConfirmProps> = ({children, onClick: inputOnClick, modal, popover, ...props}) => {
-	const [visible, setVisible] = useState<boolean>(false);
-	const variant = useMemo(() => {
-		if (modal) {
-			return 'modal';
-		}
-
-		return 'popover';
-	}, [modal, popover]);
-
-	const onClick = useCallback((event: MouseEvent<HTMLSpanElement>) => {
-		setVisible(true);
-		inputOnClick?.(event);
-	}, []);
-
-	return (
-		<>
-			<span data-testid="popconfirm-wrapper" onClick={onClick} {...props}>
-				{children}
-			</span>
-			{visible && (
-				<>
-					{variant === 'modal' && (
-						<PopConfirmWithModal />
-					)}
-					{variant === 'popover' && (
-						<PopConfirmWithPopover/>
-					)}
-				</>
-			)}
-		</>
-	);
-};
-
-export default PopConfirm;
-
-type PopConfirmVariantProps = {
-	title?: string;
-	content?: string;
-} & DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
-
-type PopConfirmWithPopoverProps =  PopConfirmVariantProps;
-
-const PopConfirmWithPopover: FC<PopConfirmWithPopoverProps> = ({...props}) => (
-	<span data-testid="popconfirm-popover-wrapper" {...props}></span>
+const PopConfirm = ({
+	viewModel,
+	children,
+	...props
+}: WithViewModelProps<PopConfirmViewModel> & PopConfirmProps) => (
+	<>
+		<span
+			data-testid="popconfirm-wrapper"
+			onClick={viewModel.onWrapperClick.bind(viewModel)}
+			{...props}
+		>
+			{children}
+		</span>
+		{viewModel.visible && (
+			<>
+				{viewModel.variant === 'modal' && <PopConfirmWithModal />}
+				{viewModel.variant === 'popover' && <PopConfirmWithPopover />}
+			</>
+		)}
+	</>
 );
 
-type PopConfirmWithModalProps =  PopConfirmVariantProps;
-
-const PopConfirmWithModal: FC<PopConfirmWithModalProps> = ({...props}) => (
-	<span data-testid="popconfirm-modal-wrapper" {...props}></span>
-);
+export default withViewModel<
+	PopConfirmProps,
+	PopConfirmViewModel,
+	PopConfirmViewModelProps
+>(PopConfirm, PopConfirmViewModel, PopConfirmViewModelProps);

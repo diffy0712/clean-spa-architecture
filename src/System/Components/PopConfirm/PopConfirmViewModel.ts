@@ -1,7 +1,6 @@
 import { action, computed, makeObservable, observable } from 'mobx';
 import { MouseEvent } from 'react';
-
-type PopConfirmVariants = 'modal' | 'popover';
+import { PopConfirmVariants } from '@System/Components/PopConfirm/Variants/PopConfirmVariantFactory';
 
 export class PopConfirmViewModelProps {
 	modal?: boolean = false;
@@ -21,7 +20,7 @@ class PopConfirmViewModel {
 	}
 
 	@observable
-	protected _variant?: string;
+	protected _variant?: PopConfirmVariants;
 
 	@computed
 	get variant() {

@@ -53,6 +53,11 @@ class PopConfirmViewModel {
 		this._visible = true;
 		this.props?.onClick?.(event);
 	}
+
+	@action
+	onCancel() {
+		this._visible = false;
+	}
 }
 
 export default PopConfirmViewModel;

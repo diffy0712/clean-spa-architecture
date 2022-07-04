@@ -7,6 +7,7 @@ import PopConfirmViewModel, {
 } from '@System/Components/PopConfirm/PopConfirmViewModel';
 import PopConfirmWithModal from '@System/Components/PopConfirm/Variants/PopConfirmWithModal';
 import PopConfirmWithPopover from '@System/Components/PopConfirm/Variants/PopConfirmWithPopover';
+import { AnimatePresence } from 'framer-motion';
 
 export type PopConfirmProps = Omit<
 	DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>,
@@ -26,12 +27,18 @@ const PopConfirm = ({
 		>
 			{children}
 		</span>
-		{viewModel.visible && (
-			<>
-				{viewModel.variant === 'modal' && <PopConfirmWithModal />}
-				{viewModel.variant === 'popover' && <PopConfirmWithPopover />}
-			</>
-		)}
+		<AnimatePresence exitBeforeEnter>
+			{viewModel.visible && (
+				<>
+					{viewModel.variant === 'modal' && (
+						<PopConfirmWithModal
+							onCancel={viewModel.onCancel.bind(viewModel)}
+						/>
+					)}
+					{viewModel.variant === 'popover' && <PopConfirmWithPopover />}
+				</>
+			)}
+		</AnimatePresence>
 	</>
 );
 

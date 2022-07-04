@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import PopConfirm from '@System/Components/PopConfirm/PopConfirm';
+import { Button } from '@mui/material';
 
 export default {
 	title: 'System - PopConfirm',
@@ -12,10 +13,16 @@ export default {
 } as ComponentMeta<typeof PopConfirm>;
 
 const Template: ComponentStory<typeof PopConfirm> = (args) => (
-	<PopConfirm {...args} />
+	<PopConfirm {...args}>
+		<Button>Delete</Button>
+	</PopConfirm>
 );
 
 export const Default = Template.bind({});
-Default.args = {
+Default.args = {};
+
+export const Modal = Template.bind({});
+Modal.args = {
 	modal: true,
+	popover: false,
 };

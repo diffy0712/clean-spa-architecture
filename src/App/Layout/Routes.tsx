@@ -1,6 +1,6 @@
-import {Route, Routes as RouterRoutes, useLocation} from 'react-router-dom';
-import {AnimatePresence} from 'framer-motion';
-import React, {ReactElement, Suspense} from 'react';
+import { Route, Routes as RouterRoutes, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import React, { ReactElement, Suspense } from 'react';
 import Loader from '@System/Components/Loader/Loader';
 
 const Home = React.lazy(() => import('@App/Pages/Home/Home'));
@@ -10,9 +10,6 @@ const ContactVM = React.lazy(() => import('@App/Pages/ContactVm/ContactVM'));
 const Notifications = React.lazy(
 	() => import('@App/Pages/Notifications/Notifications')
 );
-const CampaignModule = React.lazy(
-	() => import('@App/Pages/Campaign/CampaignModule')
-);
 const ProductModule = React.lazy(
 	() => import('@App/Pages/Product/ProductModule')
 );
@@ -20,7 +17,6 @@ const ProductModule = React.lazy(
 const Routes = () => {
 	const location = useLocation();
 	const modules: [string, ReactElement][] = [
-		['/campaigns', <CampaignModule key="campaigns" />],
 		['/products', <ProductModule key="products" />],
 	];
 

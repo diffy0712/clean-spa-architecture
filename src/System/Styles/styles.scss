@@ -12,25 +12,6 @@
 	font-family: sans-serif;
 }
 
-nav {
-	background: rgba(0, 0, 0, 0.6);
-	display: flex;
-	justify-content: center;
-}
-
-nav .nav-item {
-	margin: 4px 6px;
-}
-nav .nav-item a {
-	text-decoration: none;
-	color: #fff;
-	text-transform: uppercase;
-}
-
-nav .nav-item a:hover {
-	color: #ddd;
-}
-
 .page-container {
 	margin: 20px 0px;
 }

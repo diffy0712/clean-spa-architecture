@@ -18,7 +18,7 @@ describe('Notifications Page tests', () => {
 	test('Clicking button calls method', () => {
 		const onMessageMock = jest.spyOn(
 			NotificationsViewModel.prototype,
-			'onMessage'
+			'notificationMessage'
 		);
 
 		const dom = render(<Notifications />);

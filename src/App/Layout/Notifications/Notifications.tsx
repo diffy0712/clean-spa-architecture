@@ -4,13 +4,21 @@ import NotificationsViewModel, {
 	NotificationsViewModelProps,
 } from '@App/Layout/Notifications/NotificationsViewModel';
 import { Slide } from '@mui/material';
+import NotificationActions from '@App/Layout/Notifications/NotificationActions';
 
 const NotificationViewModel = withSnackbar(
 	withViewModel<
 		Record<string, unknown>,
 		NotificationsViewModel,
 		NotificationsViewModelProps
-	>(() => null, NotificationsViewModel, NotificationsViewModelProps)
+	>(
+		({ viewModel }) => {
+			viewModel.setActionsComponent(NotificationActions);
+			return null;
+		},
+		NotificationsViewModel,
+		NotificationsViewModelProps
+	)
 );
 
 const Notifications = () => (

@@ -2,9 +2,17 @@ type NotifierCallback = (notification: Notification) => void;
 
 export type NotificationTypes = 'success' | 'warning' | 'error' | 'info';
 
-export type Notification = {
-	type: NotificationTypes;
+export type NotificationAction = {
 	title: string;
+	callback: (close: () => void) => void;
+};
+
+export type Notification = {
+	type?: NotificationTypes;
+	title: string;
+	important?: boolean;
+	closeable?: boolean;
+	actions?: NotificationAction[];
 };
 
 class Notifier {

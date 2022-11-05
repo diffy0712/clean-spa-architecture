@@ -32,9 +32,6 @@ const Notifications = ({
 				<Alert severity="info" className="mb-4">
 					An overview of notificatios API usage.
 				</Alert>
-				<Alert severity="info" className="mb-4">
-					An overview of notificatios API usage.
-				</Alert>
 			</div>
 			<div className="col-6 col-offset-3">
 				<Box className="bg-white">

@@ -8,7 +8,11 @@ import {
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const ProductManage = () => (
+type ProductManageProps = {
+	mode?: 'create' | 'update';
+};
+
+const ProductManage = ({ mode }: ProductManageProps) => (
 	<Dialog
 		open
 		onClose={() => {
@@ -18,7 +22,9 @@ const ProductManage = () => (
 		aria-describedby="alert-dialog-description"
 		data-testid="module-product-manage"
 	>
-		<DialogTitle id="alert-dialog-title">Edit</DialogTitle>
+		<DialogTitle id="alert-dialog-title">
+			{mode === 'update' ? 'Updating' : 'Creating'}
+		</DialogTitle>
 		<DialogContent>
 			<DialogContentText id="alert-dialog-description">
 				EDIIIT
@@ -29,5 +35,9 @@ const ProductManage = () => (
 		</DialogActions>
 	</Dialog>
 );
+
+ProductManage.defaultProps = {
+	mode: 'update',
+};
 
 export default ProductManage;

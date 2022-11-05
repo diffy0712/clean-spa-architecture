@@ -15,6 +15,7 @@ import {
 	QuestionMark,
 	Visibility,
 } from '@mui/icons-material';
+import ModalConfirm from '@System/Components/ModalConfirm/ModalConfirm';
 
 const rows: GridRowsProp = [
 	{ id: 1, name: 'Test device' },
@@ -52,9 +53,20 @@ const columns: GridColDef[] = [
 						<Edit />
 					</IconButton>
 				</Link>
-				<IconButton color="error" aria-label="Delete Product" component="span">
-					<Delete />
-				</IconButton>
+				<ModalConfirm
+					title={`Deleting product #${cellValues.id}`}
+					onConfirm={() => {
+						console.log('should close');
+					}}
+				>
+					<IconButton
+						color="error"
+						aria-label="Delete Product"
+						component="span"
+					>
+						<Delete />
+					</IconButton>
+				</ModalConfirm>
 			</>
 		),
 		flex: 1,

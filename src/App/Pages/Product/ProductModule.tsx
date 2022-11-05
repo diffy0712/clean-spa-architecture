@@ -16,7 +16,7 @@ const ProductModule = () => (
 		</AnimatePresence>
 		<AnimatePresence exitBeforeEnter>
 			<Routes>
-				<Route path="/create" element={<ProductManage />} />
+				<Route path="/create" element={<ProductManage mode="create" />} />
 				<Route path="/:productId/edit" element={<ProductManage />} />
 				<Route path="/:productId/view" element={<ProductView />} />
 			</Routes>
